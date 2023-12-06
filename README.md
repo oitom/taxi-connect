@@ -19,9 +19,9 @@ git clone https://github.com/oitom/taxi-connect.git
 cd taxi-connect
 ```
 
-3. Construa a imagem Docker:
+3. Inicie o contêiner Docker:
 ```
-docker-compose build
+docker-compose up -d
 ```
 
 4. Instale as dependências do Composer:
@@ -29,12 +29,7 @@ docker-compose build
 docker-compose run web composer install
 ```
 
-5. Inicie o contêiner Docker:
-```
-docker-compose up -d
-```
-
-6. Acesse a aplicação em http://localhost:8080.
+5. Acesse a aplicação em http://localhost:8080.
 
 ## Utilização
 Testando a API
@@ -43,20 +38,20 @@ Você pode usar ferramentas como Postman ou curl para testar as chamadas da API.
 ### Exemplo de solicitação cURL GET:
 
 ```
-curl -X GET -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" http://localhost:8080/seu-endpoint
+curl -X GET -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" http://localhost:8080/
 ```
 ### Exemplo de solicitação cURL POST:
 
 ```
-curl -X POST -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" -d "param1=valor1&param2=valor2" http://localhost:8080/seu-endpoint
+curl -X POST -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" -d "param1=valor1&param2=valor2" http://localhost:8080/
 ```
 ### Exemplo de solicitação cURL DELETE:
 
 ```
-curl -X DELETE -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" http://localhost:8080/seu-endpoint
+curl -X DELETE -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" http://localhost:8080/
 ```
 
-#### Lembre-se de substituir seu_cliente_id, seu_cliente_secret e seu-endpoint pelos valores reais do seu cliente e endpoint.
+#### Lembre-se de substituir seu_cliente_id, seu_cliente_secret e pelos valores reais do seu client.
 
 ## Encerrando o Ambiente
 Para encerrar o ambiente Docker, execute:
