@@ -17,18 +17,21 @@ class Router
   {
     $this->authenticate();
 
-    $method = $_SERVER['REQUEST_METHOD'];
     $controller = new \Controller\ApiController();
+    
+    $queryParams = $_GET;
+    $method = $_SERVER['REQUEST_METHOD'];
+    $body = json_decode(file_get_contents("php://input"), true);
 
     switch ($method) {
       case 'GET':
-        $controller->getList();
+        $controller->getList($queryParams, $body);
         break;
       case 'POST':
-        $controller->create();
+        $controller->create($queryParams, $body);
         break;
       case 'DELETE':
-        $controller->delete();
+        $controller->delete($queryParams, $body);
         break;
       default:
         $controller->notAllow();
