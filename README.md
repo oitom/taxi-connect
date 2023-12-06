@@ -4,8 +4,8 @@ Taxi Connect é uma API robusta e confiável projetada para simplificar e fortal
 ## Configuração do Ambiente
 Pré-requisitos
 
--Docker
--Composer
+- Docker
+- Composer
 
 ## Instalação
 1. Clone este repositório:
