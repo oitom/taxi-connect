@@ -25,7 +25,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Copia os arquivos do Composer
-COPY composer.json composer.lock /var/www/html/
+COPY composer.json /var/www/html/
 
 # Instala as dependências do Composer
 RUN composer install --no-scripts
