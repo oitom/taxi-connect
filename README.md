@@ -11,7 +11,7 @@ Pré-requisitos
 1. Clone este repositório:
 
 ```
-git clone https://github.com/seu/taxi-connect.git
+git clone https://github.com/oitom/taxi-connect.git
 ```
 
 2. Acesse o diretório:
