@@ -16,8 +16,9 @@ class Corrida
   private $tipoPagamento;
   private $autenticacao;
   private $status;
+  private $horarioPico;
 
-  public function __construct($origem, $destino, Passageiro $passageiro, Motorista $motorista, $tipoCorrida, $precoEstimado, $tipoPagamento, $autenticacao, $status = 'created')
+  public function __construct($origem, $destino, Passageiro $passageiro, Motorista $motorista, $tipoCorrida, $precoEstimado, $tipoPagamento, $autenticacao, $horarioPico, $status = 'created' )
   {
     $this->validarCampo($origem, 'origem');
     $this->validarCampo($destino, 'destino');
@@ -35,6 +36,7 @@ class Corrida
     $this->precoEstimado = $precoEstimado;
     $this->tipoPagamento = $tipoPagamento;
     $this->autenticacao = $autenticacao;
+    $this->$horarioPico = $horarioPico;
     $this->status = $status;
   }
   
@@ -44,12 +46,6 @@ class Corrida
     $this->precoEstimado = $taxaFixa * $this->calcularDistancia();
 
     return $this->precoEstimado;
-  }
-
-  private function calcularDistancia()
-  {
-    $distancia = 10.0;
-    return $distancia;
   }
 
   public function autenticarCorrida()
@@ -75,6 +71,60 @@ class Corrida
     }
   }
 
+  public function getTarifaPorDistancia()
+  {
+    $distancia = $this->calcularDistancia($this->getOrigem(), $this->getDestino());
+    $tarifaPorDistancia = $distancia * 2;
+
+    return $tarifaPorDistancia;
+  }
+
+  private function calcularDistancia($origem, $destino)
+  {
+    $distancia = 10.0;
+    return $distancia;
+  }
+
+  public function getValorTarifa()
+  {
+    $precoEstimado = $this->getPrecoEstimado();
+
+    if($this->getTipoCorrida() == "taximetro")
+      $valorTarifa = 2.5;
+    else
+      $valorTarifa = $precoEstimado * 1.2;
+    
+    return $valorTarifa;
+  }
+
+  public function getTarifaExtraHorarioPico()
+  {
+    $horaCorrida = date("H");
+    $tarifaExtra = ($horaCorrida >= 18 && $horaCorrida <= 22) ? 5.0 : 0.0; 
+
+    return $tarifaExtra;
+  }
+
+  public function getTempo()
+  {
+    $distancia = $this->calcularDistancia($this->getOrigem(), $this->getDestino());
+    $tempoBase = $distancia * 10;
+
+    if ($this->horarioPico) {
+      $tempoBase += 10; 
+    }
+    return $tempoBase;
+  }
+  
+  public function getTarifaExtraTempoExcedido()
+  {
+    $tempoTotal = $this->getTempo();
+    $limiteTempo = 30;
+    $tarifaExtra = max($tempoTotal - $limiteTempo, 0) * 0.5;
+
+    return $tarifaExtra;
+  }
+  
   public function getOrigem() { return $this->origem; }
   public function getDestino() { return $this->destino; }
   public function getPassageiro() { return $this->passageiro; }

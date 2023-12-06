@@ -6,7 +6,7 @@ use Model\Passageiro;
 use Model\Motorista;
 use Model\Corrida;
 use Presenter\CorridaPresenter;
-
+use Service\CorridaService;
 
 class ApiController
 {
@@ -22,10 +22,11 @@ class ApiController
   public function create($parms=null, $body=null)
   {
     $corrida = $this->criarCorrida($body);
+    $res = $this->autorizarCorrida($corrida);
     
-    $presenter = new CorridaPresenter($corrida);
-    $camposDesejados = ['origem', 'destino', 'tipoCorrida', 'status'];
-    $res = $presenter->toArray($camposDesejados);
+    // $presenter = new CorridaPresenter($corrida);
+    // $camposDesejados = ['origem', 'destino', 'tipoCorrida', 'status'];
+    // $res = $presenter->toArray($camposDesejados);
 
     $response = array(
       'message' => 'create',
@@ -45,6 +46,17 @@ class ApiController
     echo json_encode(['message' => 'notAllow']);
   }
 
+  public function autorizarCorrida(Corrida $corrida)
+  {
+    $corridaService = new CorridaService();
+
+    if ($corridaService->validarCorrida($corrida)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
   private function criarPassageiro($dados): Passageiro
   {
     return new Passageiro($dados["cpf"], $dados["nome"], $dados["telefone"]);
@@ -68,7 +80,8 @@ class ApiController
       $dados["corrida"]["tipo_da_corrida"],
       $dados["corrida"]["preco_estimado"],
       $dados["corrida"]["tipo_pagamento"],
-      $dados["corrida"]["autenticacao"]
+      $dados["corrida"]["autenticacao"],
+      $dados["corrida"]["horarioDePico"],
     );
   }
 }
