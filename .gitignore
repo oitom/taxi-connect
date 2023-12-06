@@ -1,0 +1,31 @@
+# Ignora arquivos de configuração do sistema
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignora o diretório vendor gerado pelo Composer
+vendor/
+
+# Ignora os arquivos de log gerados pela execução da aplicação
+logs/
+*.log
+
+# Ignora o diretório de build
+build/
+
+# Ignora arquivos temporários
+*.swp
+
+# Ignora arquivos de configuração do ambiente
+.env
+.env.local
+.env.*.local
+
+# Ignora os arquivos de dependências do Composer
+composer.lock
+
+# Ignora o diretório de instalação do Composer
+vendor/
+
+# Ignora arquivos gerados automaticamente
+*.meta

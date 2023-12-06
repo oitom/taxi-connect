@@ -1,0 +1,11 @@
+{
+  "name": "seu/taxi-connect",
+  "require": {
+    "aws/aws-sdk-php": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  }
+}
