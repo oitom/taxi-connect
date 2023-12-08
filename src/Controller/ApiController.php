@@ -98,8 +98,12 @@ class ApiController
   private function criarCorrida($dados): array
   {
     try {
-      $passageiro = $this->criarPassageiro($dados["corrida"]["passageiro"]);
-      $motorista = $this->criarMotorista($dados["corrida"]["motorista"]);
+
+      $_passageiro = $dados["corrida"]["passageiro"] ?? null;
+      $_motorista = $dados["corrida"]["motorista"] ?? null;
+
+      $passageiro = $this->criarPassageiro($_passageiro);
+      $motorista = $this->criarMotorista($_motorista);
 
       $origem = $dados["corrida"]["origem"] ?? null;
       $destino = $dados["corrida"]["destino"] ?? null;
