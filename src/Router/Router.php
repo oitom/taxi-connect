@@ -15,6 +15,8 @@ class Router
 
   public function handleRequest()
   {
+    header('Content-Type: application/json');
+    
     $this->authenticate();
 
     $controller = new \Controller\ApiController();
@@ -22,19 +24,16 @@ class Router
     $queryParams = $_GET;
     $method = $_SERVER['REQUEST_METHOD'];
     $body = json_decode(file_get_contents("php://input"), true);
-
     switch ($method) {
-      case 'GET':
-        $controller->getList($queryParams, $body);
-        break;
       case 'POST':
-        $controller->create($queryParams, $body);
+        echo $controller->create($queryParams, $body);
         break;
       case 'DELETE':
-        $controller->delete($queryParams, $body);
+        echo $controller->delete($queryParams, $body);
         break;
       default:
-        $controller->notAllow();
+        http_response_code(403);
+        echo json_encode(["message" => "Método inválido!"]);
         break;
     }
   }

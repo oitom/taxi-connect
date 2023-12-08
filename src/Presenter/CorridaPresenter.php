@@ -22,10 +22,10 @@ class CorridaPresenter
       'precoEstimado' => $this->corrida->getPrecoEstimado(),
       'tipoPagamento' => $this->corrida->getTipoPagamento(),
       'autenticacao' => $this->corrida->getAutenticacao(),
+      'preco' => $this->corrida->getPreco(),
       'status' => $this->corrida->getStatus(),
     ];
 
-    // Filtrar os campos conforme a lista fornecida
     if (!empty($campos)) {
       $dados = array_intersect_key($dados, array_flip($campos));
     }

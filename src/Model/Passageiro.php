@@ -9,9 +9,19 @@ class Passageiro
 
   public function __construct($cpf, $nome, $telefone)
   {
+    $this->validarCampo($cpf, 'cpf');
+    $this->validarCampo($telefone, 'telefone');
+
     $this->cpf = $cpf;
     $this->nome = $nome;
     $this->telefone = $telefone;
+  }
+  
+  private function validarCampo($valor, $campo)
+  {
+    if (empty($valor) || $valor === null) {
+      throw new \InvalidArgumentException(sprintf('O campo passageiro %s não pode estar vazio.', $campo));
+    }
   }
 
   public function getCPF() { return $this->cpf; }

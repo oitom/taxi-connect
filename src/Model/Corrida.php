@@ -13,12 +13,13 @@ class Corrida
   private $motorista;
   private $tipoCorrida;
   private $precoEstimado;
+  private $preco;
   private $tipoPagamento;
   private $autenticacao;
-  private $status;
   private $horarioPico;
+  private $status;
 
-  public function __construct($origem, $destino, Passageiro $passageiro, Motorista $motorista, $tipoCorrida, $precoEstimado, $tipoPagamento, $autenticacao, $horarioPico, $status = 'created' )
+  public function __construct($origem, $destino, Passageiro $passageiro, Motorista $motorista, $tipoCorrida, $precoEstimado, $preco, $tipoPagamento, $horarioPico, $autenticacao, $status)
   {
     $this->validarCampo($origem, 'origem');
     $this->validarCampo($destino, 'destino');
@@ -27,6 +28,7 @@ class Corrida
     $this->validarCampo($tipoCorrida, 'tipoCorrida');
     $this->validarCampo($tipoPagamento, 'tipoPagamento');
     $this->validarCampo($autenticacao, 'autenticacao');
+    $this->validarCampo($horarioPico, 'horarioPico');
     
     $this->origem = $origem;
     $this->destino = $destino;
@@ -34,9 +36,10 @@ class Corrida
     $this->motorista = $motorista;
     $this->tipoCorrida = $tipoCorrida;
     $this->precoEstimado = $precoEstimado;
+    $this->preco = $preco;
     $this->tipoPagamento = $tipoPagamento;
+    $this->horarioPico = $horarioPico;
     $this->autenticacao = $autenticacao;
-    $this->$horarioPico = $horarioPico;
     $this->status = $status;
   }
   
@@ -66,8 +69,8 @@ class Corrida
 
   private function validarCampo($valor, $campo)
   {
-    if (empty($valor)) {
-        throw new InvalidArgumentException(sprintf('O campo "%s" não pode estar vazio.', $campo));
+    if (empty($valor) || $valor === null) {
+      throw new \InvalidArgumentException(sprintf('O campo %s não pode estar vazio.', $campo));
     }
   }
 
@@ -99,19 +102,23 @@ class Corrida
 
   public function getTarifaExtraHorarioPico()
   {
-    $horaCorrida = date("H");
-    $tarifaExtra = ($horaCorrida >= 18 && $horaCorrida <= 22) ? 5.0 : 0.0; 
+    $tarifaExtra = 5.0; 
+    return $tarifaExtra;
+  }
 
+  public function getTarifaExtraLocalDificilAcesso()
+  {
+    $tarifaExtra = 3.0; 
     return $tarifaExtra;
   }
 
   public function getTempo()
   {
     $distancia = $this->calcularDistancia($this->getOrigem(), $this->getDestino());
-    $tempoBase = $distancia * 10;
+    $tempoBase = $distancia * 0.4;
 
     if ($this->horarioPico) {
-      $tempoBase += 10; 
+      $tempoBase += 10.2; 
     }
     return $tempoBase;
   }
@@ -119,8 +126,8 @@ class Corrida
   public function getTarifaExtraTempoExcedido()
   {
     $tempoTotal = $this->getTempo();
-    $limiteTempo = 30;
-    $tarifaExtra = max($tempoTotal - $limiteTempo, 0) * 0.5;
+    $limiteTempo = 12;
+    $tarifaExtra = max($tempoTotal - $limiteTempo, 0) * 2;
 
     return $tarifaExtra;
   }
@@ -134,4 +141,8 @@ class Corrida
   public function getTipoPagamento() { return $this->tipoPagamento; }
   public function getAutenticacao() { return $this->autenticacao; }
   public function getStatus() { return $this->status; }
+  public function getHorarioPico() { return $this->horarioPico; }
+
+  public function getPreco() { return $this->preco; }
+  public function setPreco($preco) { $this->preco = $preco; }
 }

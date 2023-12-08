@@ -10,47 +10,41 @@ class CorridaService
   public function __construct() {
   }
 
-  public function validarCorrida(Corrida $corrida)
+  public function calculaPreco(Corrida $corrida)
   {
-
     if ($corrida->getTipoCorrida() === 'taximetro') {
       $tarifaPorDistancia = $corrida->getTarifaPorDistancia();
-      $valorTarifa = $corrida->getValorTarifa();
 
-      if ($this->isHorarioDePico()) {
+      if ($corrida->getHorarioPico()) {
         $tarifaPorDistancia += $corrida->getTarifaExtraHorarioPico();
       }
 
       if ($this->isLocalDificilAcesso($corrida->getOrigem()) || $this->isLocalDificilAcesso($corrida->getDestino())) {
         $tarifaPorDistancia += $corrida->getTarifaExtraLocalDificilAcesso();
       }
-
+      
       if ($this->isTempoExcedido($corrida->getTempo())) {
         $tarifaPorDistancia += $corrida->getTarifaExtraTempoExcedido();
       }
-
-      if ($tarifaPorDistancia >= $valorTarifa) {
-        return true;
-      } else {
-        return false;
-      }
+      $corrida->setPreco($tarifaPorDistancia);
     }
-
+    else if ($corrida->getTipoCorrida() === 'preco_fixo') {
+      $corrida->setPreco($corrida->getPrecoEstimado());
+    }
+    else {
+      return false;
+    }
+    
     return true;
-  }
-
-  private function isHorarioDePico()
-  {
-    return false;
   }
 
   private function isLocalDificilAcesso($local)
   {
-    return false;
+    return true;
   }
 
   private function isTempoExcedido($tempo)
   {
-    return false;
+    return true;
   }
 }
