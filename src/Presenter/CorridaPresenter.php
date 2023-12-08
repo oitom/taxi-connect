@@ -66,4 +66,15 @@ class CorridaPresenter
 
     return $dados;
   }
+
+  public function toAllArray()
+  {
+    $response = $this->corrida->toArray();
+    return json_encode($response,  JSON_PRETTY_PRINT);
+  }
+  
+  public function toAll($corridas)
+  {
+    return json_encode($corridas,  JSON_PRETTY_PRINT);
+  }
 }

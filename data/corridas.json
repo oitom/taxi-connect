@@ -1,42 +1,6 @@
 [
     {
-        "uuid": "b2058c7b-0c9b-43b5-8033-05cdcead9a05",
-        "origem": {
-            "latitude": 40.7749,
-            "longitude": -122.4194,
-            "endereco": "123 Main Street, Cidade A"
-        },
-        "destino": {
-            "latitude": 37.3352,
-            "longitude": -121.8811,
-            "endereco": "456 Oak Street, Cidade B"
-        },
-        "passageiro": {
-            "cpf": "451.643.942-24",
-            "nome": "Jo\u00e3o Silva",
-            "telefone": "+551234567890"
-        },
-        "motorista": {
-            "cnpj": "12.124.543.0001\/20",
-            "nome": "Maria Joana Oliveira",
-            "placaVeiculo": "ABC123",
-            "modeloVeiculo": "Toyota Corolla"
-        },
-        "tipoCorrida": "taximetro",
-        "precoEstimado": 20,
-        "preco": 0,
-        "tipoPagamento": "cartao_credito",
-        "autenticacao": {
-            "token_acesso": "token123",
-            "chave_seguranca": "segredo456"
-        },
-        "horarioPico": false,
-        "status": "cancelada",
-        "statusDesc": "A corrida foi cancelada em 2023-12-08 23:40:43",
-        "data": "2023-12-08 23:37:32"
-    },
-    {
-        "uuid": "f14d098b-560b-4720-8a4f-08a219a23e07",
+        "uuid": "a1b0cbef-c7cf-486f-874d-ef96296f2346",
         "origem": {
             "latitude": 32.7749,
             "longitude": -122.4194,
@@ -67,8 +31,80 @@
             "chave_seguranca": "segredo456"
         },
         "horarioPico": false,
-        "status": "ativa",
-        "statusDesc": "A corrida foi ativada em 2023-12-08 23:40:21",
-        "data": "2023-12-08 23:40:05"
+        "status": "autorizada",
+        "statusDesc": null,
+        "data": "2023-12-08 23:48:30"
+    },
+    {
+        "uuid": "15d9aefd-a898-4165-8101-d857a1df26ed",
+        "origem": {
+            "latitude": 32.7749,
+            "longitude": -122.4194,
+            "endereco": "123 Main Street, Cidade A"
+        },
+        "destino": {
+            "latitude": 37.3352,
+            "longitude": -121.8811,
+            "endereco": "456 Oak Street, Cidade B"
+        },
+        "passageiro": {
+            "cpf": "451.643.942-24",
+            "nome": "Jo\u00e3o Silva",
+            "telefone": "+551234567890"
+        },
+        "motorista": {
+            "cnpj": "12.124.543.0001\/20",
+            "nome": "Maria Joana Oliveira",
+            "placaVeiculo": "ABC123",
+            "modeloVeiculo": "Toyota Corolla"
+        },
+        "tipoCorrida": "taximetro",
+        "precoEstimado": 20,
+        "preco": 23,
+        "tipoPagamento": "cartao_credito",
+        "autenticacao": {
+            "token_acesso": "token123",
+            "chave_seguranca": "segredo456"
+        },
+        "horarioPico": false,
+        "status": "autorizada",
+        "statusDesc": null,
+        "data": "2023-12-08 23:50:32"
+    },
+    {
+        "uuid": "fbe084f6-0808-4dfa-90b5-a7ceb72f82c6",
+        "origem": {
+            "latitude": 32.7749,
+            "longitude": -122.4194,
+            "endereco": "123 Main Street, Cidade A"
+        },
+        "destino": {
+            "latitude": 37.3352,
+            "longitude": -121.8811,
+            "endereco": "456 Oak Street, Cidade B"
+        },
+        "passageiro": {
+            "cpf": "451.643.942-24",
+            "nome": "Jo\u00e3o Silva",
+            "telefone": "+551234567890"
+        },
+        "motorista": {
+            "cnpj": "12.124.543.0001\/20",
+            "nome": "Maria Joana Oliveira",
+            "placaVeiculo": "ABC123",
+            "modeloVeiculo": "Toyota Corolla"
+        },
+        "tipoCorrida": "taximetro",
+        "precoEstimado": 20,
+        "preco": 23,
+        "tipoPagamento": "cartao_credito",
+        "autenticacao": {
+            "token_acesso": "token123",
+            "chave_seguranca": "segredo456"
+        },
+        "horarioPico": false,
+        "status": "autorizada",
+        "statusDesc": null,
+        "data": "2023-12-08 23:50:33"
     }
 ]

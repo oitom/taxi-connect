@@ -2,12 +2,21 @@
 
 namespace Controller;
 
+use Service\ListCorridaService;
 use Service\CreateCorridaService;
 use Service\CancelCorridaService;
 use Service\AticvateCorridaService;
 
 class ApiController
 {
+  public function list($params=null)
+  {
+    $corridaService = new ListCorridaService($params);
+    $response = $corridaService->list();
+
+    return $response;
+  }
+
   public function create($params=null, $body=null)
   {  
     $corridaService = new CreateCorridaService($body);
