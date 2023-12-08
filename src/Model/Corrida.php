@@ -4,9 +4,11 @@ namespace Model;
 
 use Model\Passageiro;
 use Model\Motorista;
+use Ramsey\Uuid\Uuid;
 
 class Corrida
 {
+  private $uuid;
   private $origem;
   private $destino;
   private $passageiro;
@@ -18,8 +20,9 @@ class Corrida
   private $autenticacao;
   private $horarioPico;
   private $status;
+  private $statusDesc;
 
-  public function __construct($origem, $destino, Passageiro $passageiro, Motorista $motorista, $tipoCorrida, $precoEstimado, $preco, $tipoPagamento, $horarioPico, $autenticacao, $status)
+  public function __construct($origem, $destino, Passageiro $passageiro, Motorista $motorista, $tipoCorrida, $precoEstimado, $tipoPagamento, $horarioPico, $autenticacao)
   {
     $this->validarCampo($origem, 'origem');
     $this->validarCampo($destino, 'destino');
@@ -28,19 +31,18 @@ class Corrida
     $this->validarCampo($tipoCorrida, 'tipoCorrida');
     $this->validarCampo($tipoPagamento, 'tipoPagamento');
     $this->validarCampo($autenticacao, 'autenticacao');
-    $this->validarCampo($horarioPico, 'horarioPico');
     
+    $uuid = Uuid::uuid4();
+    $this->uuid = $uuid->toString();
     $this->origem = $origem;
     $this->destino = $destino;
     $this->passageiro = $passageiro;
     $this->motorista = $motorista;
     $this->tipoCorrida = $tipoCorrida;
     $this->precoEstimado = $precoEstimado;
-    $this->preco = $preco;
     $this->tipoPagamento = $tipoPagamento;
-    $this->horarioPico = $horarioPico;
+    $this->horarioPico = (bool) $horarioPico;
     $this->autenticacao = $autenticacao;
-    $this->status = $status;
   }
   
   public function calcularPreco()
@@ -69,7 +71,7 @@ class Corrida
 
   private function validarCampo($valor, $campo)
   {
-    if (empty($valor) || $valor === null) {
+    if (empty($valor)) {
       throw new \InvalidArgumentException(sprintf('O campo %s não pode estar vazio.', $campo));
     }
   }
@@ -132,6 +134,7 @@ class Corrida
     return $tarifaExtra;
   }
   
+  public function getUuid() { return $this->uuid; }
   public function getOrigem() { return $this->origem; }
   public function getDestino() { return $this->destino; }
   public function getPassageiro() { return $this->passageiro; }
@@ -140,8 +143,14 @@ class Corrida
   public function getPrecoEstimado() { return $this->precoEstimado; }
   public function getTipoPagamento() { return $this->tipoPagamento; }
   public function getAutenticacao() { return $this->autenticacao; }
-  public function getStatus() { return $this->status; }
   public function getHorarioPico() { return $this->horarioPico; }
+  public function getData() { return date('Y-m-d H:i:s'); }
+
+  public function getStatus() { return $this->status; }
+  public function setStatus($status) { $this->status = $status; }
+
+  public function getStatusDesc() { return $this->statusDesc; }
+  public function setStatusDesc($statusDesc) { $this->statusDesc = $statusDesc; }
 
   public function getPreco() { return $this->preco; }
   public function setPreco($preco) { $this->preco = $preco; }

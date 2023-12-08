@@ -14,6 +14,7 @@ class CorridaPresenter
   public function toArray(array $campos = [])
   {
     $dados = [
+      'uuid' => $this->corrida->getUuid(),
       'origem' => $this->corrida->getOrigem(),
       'destino' => $this->corrida->getDestino(),
       'passageiro' => $this->corrida->getPassageiro()->toArray(),
@@ -24,6 +25,7 @@ class CorridaPresenter
       'autenticacao' => $this->corrida->getAutenticacao(),
       'preco' => $this->corrida->getPreco(),
       'status' => $this->corrida->getStatus(),
+      'data' => $this->corrida->getData(),
     ];
 
     if (!empty($campos)) {

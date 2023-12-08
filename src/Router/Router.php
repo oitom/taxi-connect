@@ -16,7 +16,7 @@ class Router
   public function handleRequest()
   {
     header('Content-Type: application/json');
-    
+  
     $this->authenticate();
 
     $controller = new \Controller\ApiController();

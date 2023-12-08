@@ -38,6 +38,31 @@ class CorridaService
     return true;
   }
 
+  public function validarCorrida(Corrida $corrida)
+  {
+    $diferencaMaximaPermitida = 10.0;
+    $valorMaximoPermitido = 30.0;
+
+    $preco = $corrida->getPreco();
+    $precoEstimado = $corrida->getPrecoEstimado();
+    
+    $diferenca = abs($preco - $precoEstimado);
+    if ($diferenca > $diferencaMaximaPermitida) {
+      $corrida->setStatus('rejeitada');
+      $corrida->setStatusDesc('A diferença entre o preço real e o preço estimado excedeu o limite permitido.');
+      return false;
+    }
+    
+    if ($preco > $valorMaximoPermitido) {
+      $corrida->setStatus('rejeitada');
+      $corrida->setStatusDesc('O preço total da corrida excedeu o limite permitido.');
+      return false;
+    }
+
+    $corrida->setStatus('autorizada');
+    return true;
+  }
+
   private function isLocalDificilAcesso($local)
   {
     return true;

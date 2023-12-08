@@ -13,33 +13,35 @@ class ApiController
   public function create($parms=null, $body=null)
   {   
     $resp = $this->criarCorrida($body);
+    $corrida = $resp["corrida"];
 
     if($resp["error"]) {
       http_response_code(401);
-      return json_encode(array('message' => $resp["msg"]),  JSON_PRETTY_PRINT);
+      return json_encode(array('code'=> 401, 'message' => $resp["msg"]),  JSON_PRETTY_PRINT);
     }
-    $corrida = $resp["corrida"];
-
+        
     if(!$this->calculaPreco($corrida)) {
       http_response_code(401);
-      return json_encode(array('message' => 'Não foi possível calcular o valor da corrida. Campo tipo_corrida invalido!'),  JSON_PRETTY_PRINT);
+      return json_encode(array('code'=> 401, 'message' => 'Não foi possível calcular o valor da corrida. Campo tipo_corrida invalido!'),  JSON_PRETTY_PRINT);
     }
 
-    // $res = $this->autorizarCorrida($corrida);
+    if(!$this->autorizarCorrida($corrida)) {
+      http_response_code(401);
+      return json_encode(array('code'=> 401, 'message' => 'Não foi possível autorizar a corrida.', 'reason' => $corrida->getStatusDesc(), 'status'=> $corrida->getStatus()),  JSON_PRETTY_PRINT);
+    }
     
     $presenter = new CorridaPresenter($corrida);
-    $camposDesejados = ['origem', 'destino', 'tipoCorrida', 'preco', 'status'];
+    $camposDesejados = ['uuid', 'origem', 'destino', 'tipoCorrida', 'preco', 'status', 'data'];
     $res = $presenter->toArray($camposDesejados);
     
     $response = array(
+      'code' => 201,
       'message' => 'Corrida criada com sucesso!',
-      'response'=> array(
-        "corrida"=> $res,
-      )
+      'data'=> $res
     );
 
     http_response_code(201);
-    echo json_encode($response,  JSON_PRETTY_PRINT);
+    return json_encode($response,  JSON_PRETTY_PRINT);
   }
 
   public function delete($parms=null, $body=null)
@@ -110,8 +112,8 @@ class ApiController
       $tipoCorrida = $dados["corrida"]["tipo_corrida"] ?? null;
       $precoEstimado = $dados["corrida"]["preco_estimado"] ?? null;
       $tipoPagamento = $dados["corrida"]["tipo_pagamento"] ?? null;
-      $horarioPico = $dados["corrida"]["horarioPico"] ?? null;
       $autenticacao = $dados["corrida"]["autenticacao"] ?? null;
+      $horarioPico = isset($dados["corrida"]["horarioPico"]) && $dados["corrida"]["horarioPico"] === true;
 
       $corrida = new Corrida(
         $origem,
@@ -120,11 +122,9 @@ class ApiController
         $motorista,
         $tipoCorrida,
         $precoEstimado,
-        0,
         $tipoPagamento,
         $horarioPico,
         $autenticacao,
-        'created'
       );
 
       return ["corrida" => $corrida, "error" => false];

@@ -1,7 +1,8 @@
 {
   "name": "seu/taxi-connect",
   "require": {
-    "aws/aws-sdk-php": "^3.0"
+    "aws/aws-sdk-php": "^3.0",
+    "ramsey/uuid": "^4.2"
   },
   "autoload": {
     "psr-4": {
