@@ -10,38 +10,27 @@ use Service\CorridaService;
 
 class ApiController
 {
-  public function create($parms=null, $body=null)
+  public function create($params=null, $body=null)
   {   
     $resp = $this->criarCorrida($body);
     $corrida = $resp["corrida"];
 
+    $campos = ['uuid', 'origem', 'destino', 'tipoCorrida', 'preco', 'status', 'data'];
+    $presenter = new CorridaPresenter($corrida, $campos);
+
     if($resp["error"]) {
-      http_response_code(401);
-      return json_encode(array('code'=> 401, 'message' => $resp["msg"]),  JSON_PRETTY_PRINT);
+      return $presenter->error($resp["msg"]);
     }
-        
+    
     if(!$this->calculaPreco($corrida)) {
-      http_response_code(401);
-      return json_encode(array('code'=> 401, 'message' => 'Não foi possível calcular o valor da corrida. Campo tipo_corrida invalido!'),  JSON_PRETTY_PRINT);
+      return $presenter->error('Não foi possível calcular o valor da corrida. Campo tipo_corrida invalido!');
     }
 
     if(!$this->autorizarCorrida($corrida)) {
-      http_response_code(401);
-      return json_encode(array('code'=> 401, 'message' => 'Não foi possível autorizar a corrida.', 'reason' => $corrida->getStatusDesc(), 'status'=> $corrida->getStatus()),  JSON_PRETTY_PRINT);
+      return $presenter->error('Não foi possível autorizar a corrida.');
     }
-    
-    $presenter = new CorridaPresenter($corrida);
-    $camposDesejados = ['uuid', 'origem', 'destino', 'tipoCorrida', 'preco', 'status', 'data'];
-    $res = $presenter->toArray($camposDesejados);
-    
-    $response = array(
-      'code' => 201,
-      'message' => 'Corrida criada com sucesso!',
-      'data'=> $res
-    );
 
-    http_response_code(201);
-    return json_encode($response,  JSON_PRETTY_PRINT);
+    return $presenter->success();
   }
 
   public function delete($parms=null, $body=null)
