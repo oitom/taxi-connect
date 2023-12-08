@@ -63,6 +63,26 @@ class CorridaService
     return true;
   }
 
+  public function verificarCancelamento(Corrida $corrida)
+  {
+    if($corrida->getStatus() == "ativa") {
+      $corrida->setStatusDesc("Corrida em andamento!");
+      return false;
+    }
+    
+    return true;
+  }
+
+  public function cancelarCorrida(Corrida $corrida)
+  {
+    $data_cancelamento = date("Y-m-d H:i:s");
+
+    $corrida->setStatus("cancelada");
+    $corrida->setPreco(0);
+    $corrida->setStatusDesc("A corrida foi cancelada em $data_cancelamento");
+    return true;
+  }
+
   private function isLocalDificilAcesso($local)
   {
     return true;
@@ -71,5 +91,5 @@ class CorridaService
   private function isTempoExcedido($tempo)
   {
     return true;
-  }
+  }  
 }

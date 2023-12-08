@@ -30,15 +30,36 @@ class ApiController
       return $presenter->error('Não foi possível autorizar a corrida.');
     }
 
+    
+    $this->inserirCorrida($corrida->toArray());
     return $presenter->success();
   }
 
-  public function delete($parms=null, $body=null)
+  public function delete($params=null, $body=null)
   {
-    echo json_encode(['message' => 'cancel']);
+  
+    $resp = $this->getCorridaPorUuid($params['uuid']);
+    $corrida = $resp["corrida"] ?? null;
+    $campos = ['uuid', 'origem', 'destino', 'tipoCorrida', 'preco', 'status', 'statusDesc', 'data'];
+    
+    $presenter = new CorridaPresenter($corrida, $campos);
+    
+    if (!$corrida) {
+      return $presenter->error('Corrida não encontrada.');
+    }
+    else {
+      $presenter = new CorridaPresenter($resp['corrida'], $campos);
+
+      if (!$this->podeCancelarCorrida($corrida)) {
+        return $presenter->error('Não é possível cancelar a corrida neste momento.');
+      }
+ 
+     $this->cancelarCorrida($corrida);
+     return $presenter->success();
+    }   
   }
 
-  private function calculaPreco(corrida $corrida) 
+  private function calculaPreco(Corrida $corrida) 
   {
     $corridaService = new CorridaService();
     return $corridaService->calculaPreco($corrida);
@@ -55,6 +76,18 @@ class ApiController
     }
   }
   
+  private function cancelarCorrida(Corrida $corrida)
+  {
+    $corridaService = new CorridaService();
+    return $corridaService->cancelarCorrida($corrida);
+  }
+
+  private function podeCancelarCorrida(Corrida $corrida) 
+  {
+    $corridaService = new CorridaService();
+    return $corridaService->verificarCancelamento($corrida);
+  }
+
   private function criarPassageiro($dados): Passageiro
   {
     try {
@@ -75,8 +108,8 @@ class ApiController
     try {
       $cnpj = $dados["cnpj"] ?? null;
       $nome = $dados["nome"] ?? null;
-      $placaVeiculo = $dados["placa_veiculo"] ?? null;
-      $modeloVeiculo = $dados["modelo_veiculo"] ?? null;
+      $placaVeiculo = $dados["placaVeiculo"] ?? null;
+      $modeloVeiculo = $dados["modeloVeiculo"] ?? null;
 
       return new Motorista($cnpj, $nome, $placaVeiculo, $modeloVeiculo);
     } catch (\InvalidArgumentException $e) {
@@ -86,7 +119,7 @@ class ApiController
     }
   }
 
-  private function criarCorrida($dados): array
+  private function criarCorrida($dados, $status=""): array
   {
     try {
 
@@ -98,12 +131,13 @@ class ApiController
 
       $origem = $dados["corrida"]["origem"] ?? null;
       $destino = $dados["corrida"]["destino"] ?? null;
-      $tipoCorrida = $dados["corrida"]["tipo_corrida"] ?? null;
-      $precoEstimado = $dados["corrida"]["preco_estimado"] ?? null;
-      $tipoPagamento = $dados["corrida"]["tipo_pagamento"] ?? null;
+      $tipoCorrida = $dados["corrida"]["tipoCorrida"] ?? null;
+      $precoEstimado = $dados["corrida"]["precoEstimado"] ?? null;
+      $tipoPagamento = $dados["corrida"]["tipoPagamento"] ?? null;
       $autenticacao = $dados["corrida"]["autenticacao"] ?? null;
       $horarioPico = isset($dados["corrida"]["horarioPico"]) && $dados["corrida"]["horarioPico"] === true;
-
+      $data_criacao = $dados["corrida"]["data"] ?? date("Y-m-d H:i:s");
+      
       $corrida = new Corrida(
         $origem,
         $destino,
@@ -115,6 +149,10 @@ class ApiController
         $horarioPico,
         $autenticacao,
       );
+      
+      
+      $corrida->setStatus($status);
+      $corrida->setData($data_criacao);
 
       return ["corrida" => $corrida, "error" => false];
     } catch (\InvalidArgumentException $e) {
@@ -124,4 +162,39 @@ class ApiController
     }
   }
 
+  private function getCorridaPorUuid($uuid)
+  {
+    $corridas = $this->getCorridas();
+
+    if($corridas) {
+      foreach ($corridas as $corrida) {
+        if ($corrida['uuid'] === $uuid) {
+          $corridaModel = $this->criarCorrida(array("corrida" => $corrida), $corrida["status"]);
+          return $corridaModel;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  private function inserirCorrida($corrida)
+  {
+    $corridas = $this->getCorridas();
+    $corridas[] = $corrida;
+    $this->setCorridas($corridas);
+    return true;
+  }
+
+  private function getCorridas()
+  {
+    $jsonFilePath = '/var/www/html/data/corridas.json';
+    return file_exists($jsonFilePath) ? json_decode(file_get_contents($jsonFilePath), true) : [];
+  }
+
+  private function setCorridas($corridas)
+  {
+    $jsonFilePath = '/var/www/html/data/corridas.json';
+    file_put_contents($jsonFilePath, json_encode($corridas, JSON_PRETTY_PRINT));
+  }
 }

@@ -27,5 +27,7 @@ composer.lock
 # Ignora o diretório de instalação do Composer
 vendor/
 
+data/*
+
 # Ignora arquivos gerados automaticamente
 *.meta

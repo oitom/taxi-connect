@@ -8,7 +8,7 @@ class CorridaPresenter
   private $corrida;
   private $campos;
 
-  public function __construct(Corrida $corrida, $campos)
+  public function __construct(?Corrida $corrida, $campos)
   {
     $this->corrida = $corrida;
     $this->campos = $campos;
@@ -16,11 +16,14 @@ class CorridaPresenter
 
   public function error($msg) {
     $response = array(
-      'code' => 401,
-      'message' => $msg,
-      'reason' => $this->corrida->getStatusDesc(), 
-      'status'=> $this->corrida->getStatus()
+        'code' => 401,
+        'message' => $msg,
     );
+
+    if ($this->corrida instanceof Corrida) {
+      $response['reason'] = $this->corrida->getStatusDesc(); 
+      $response['status'] = $this->corrida->getStatus();
+    }
 
     http_response_code(401);
     return json_encode($response, JSON_PRETTY_PRINT);
@@ -39,7 +42,7 @@ class CorridaPresenter
     return json_encode($response,  JSON_PRETTY_PRINT);
   }
 
-  private function dadosToArray()
+  public function dadosToArray()
   {
     $dados = [
       'uuid' => $this->corrida->getUuid(),
@@ -53,6 +56,7 @@ class CorridaPresenter
       'autenticacao' => $this->corrida->getAutenticacao(),
       'preco' => $this->corrida->getPreco(),
       'status' => $this->corrida->getStatus(),
+      'statusDesc' => $this->corrida->getStatusDesc(),
       'data' => $this->corrida->getData(),
     ];
 

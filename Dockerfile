@@ -20,6 +20,7 @@ RUN a2enmod rewrite
 
 # Configure o diretório raiz do Apache
 WORKDIR /var/www/html
+RUN chmod 777 /var/www/html/data
 
 # Copie os arquivos da aplicação para o contêiner
 COPY . .
