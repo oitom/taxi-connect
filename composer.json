@@ -1,7 +1,6 @@
 {
-  "name": "seu/taxi-connect",
+  "name": "oitom/taxi-connect-v1.0.0",
   "require": {
-    "aws/aws-sdk-php": "^3.0",
     "ramsey/uuid": "^4.2"
   },
   "autoload": {
