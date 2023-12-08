@@ -29,7 +29,10 @@ class Router
         echo $controller->create($queryParams, $body);
         break;
       case 'DELETE':
-        echo $controller->delete($queryParams, $body);
+        echo $controller->cancel($queryParams);
+        break;
+      case 'PATCH':
+        echo $controller->activate($queryParams);
         break;
       default:
         http_response_code(403);
