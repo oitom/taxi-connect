@@ -11,7 +11,7 @@ class CorridaService
   public function __construct() {
   }
   
-  protected function criarCorrida($dados, $status = ""): array
+  protected function criarCorrida($dados, $tipo = "criar", $status = ""): array
   {    
     try {
       $_passageiro = $dados["corrida"]["passageiro"] ?? null;
@@ -43,6 +43,10 @@ class CorridaService
       
       $corrida->setStatus($status);
       $corrida->setData($data_criacao);
+
+      if($tipo == "carregar") {
+        $corrida->setUuid($dados["corrida"]["uuid"]);
+      }
 
       return ["corrida" => $corrida, "error" => false];
     } catch (\InvalidArgumentException $e) {
@@ -102,12 +106,28 @@ class CorridaService
     if($corridas) {
       foreach ($corridas as $corrida) {
         if ($corrida['uuid'] === $uuid) {
-          $corridaModel = $this->criarCorrida(array("corrida" => $corrida), $corrida["status"]);
+          $corridaModel = $this->criarCorrida(array("corrida" => $corrida), "carregar", $corrida["status"]);
           return $corridaModel;
         }
       }
     }
 
+    return null;
+  }
+
+  protected function atualizarCorrida($uuid, $dadosAtualizados)
+  {
+    $corridas = $this->getCorridas();
+
+    foreach ($corridas as &$corrida) {
+      if ($corrida['uuid'] === $uuid) {
+        $corrida = array_merge($corrida, $dadosAtualizados);
+
+        $this->setCorridas($corridas);
+
+        return $this->criarCorrida(["corrida" => $corrida], "carregar", $corrida["status"]);
+      }
+    }
     return null;
   }
 }

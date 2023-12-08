@@ -42,16 +42,25 @@ class AticvateCorridaService extends CorridaService
       $corrida->setStatusDesc("Corrida cancelada");
       return false;
     }
+    if($corrida->getStatus() == "ativa") {
+      $corrida->setStatusDesc("Corrida já foi ativada");
+      return false;
+    }
     
     return true;
   }
 
   private function ativarCorrida(Corrida $corrida)
   {
-    $data_cancelamento = date("Y-m-d H:i:s");
+    $data_ativacao = date("Y-m-d H:i:s");
 
-    $corrida->setStatus("ativa");
-    $corrida->setStatusDesc("A corrida foi ativada em $data_cancelamento");
-    return true;
+    $dados_atualizar = array(
+      "status" => "ativa",
+      "statusDesc" => "A corrida foi ativada em $data_ativacao",
+    );
+
+    $corrida->setStatus($dados_atualizar["status"]);
+    $corrida->setStatusDesc($dados_atualizar["statusDesc"]);
+    $corrida_atualizada = parent::atualizarCorrida($corrida->getUuid(), $dados_atualizar);
   }
 }

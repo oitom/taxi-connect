@@ -137,6 +137,8 @@ class Corrida
   }
   
   public function getUuid() { return $this->uuid; }
+  public function setUuid($uuid) { $this->uuid = $uuid; }
+
   public function getOrigem() { return $this->origem; }
   public function getDestino() { return $this->destino; }
   public function getPassageiro() { return $this->passageiro; }

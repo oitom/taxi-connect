@@ -42,6 +42,10 @@ class CancelCorridaService extends CorridaService
       $corrida->setStatusDesc("Corrida em andamento!");
       return false;
     }
+    if($corrida->getStatus() == "cancelada") {
+      $corrida->setStatusDesc("Corrida já foi cancelada");
+      return false;
+    }
     
     return true;
   }
@@ -50,9 +54,17 @@ class CancelCorridaService extends CorridaService
   {
     $data_cancelamento = date("Y-m-d H:i:s");
 
-    $corrida->setStatus("cancelada");
-    $corrida->setPreco(0);
-    $corrida->setStatusDesc("A corrida foi cancelada em $data_cancelamento");
+    $dados_atualizar = array(
+      "status" => "cancelada",
+      "statusDesc" => "A corrida foi cancelada em $data_cancelamento",
+      "preco" => 0,
+    );
+
+    $corrida->setStatus($dados_atualizar["status"]);
+    $corrida->setPreco($dados_atualizar["preco"]);
+    $corrida->setStatusDesc($dados_atualizar["statusDesc"]);
+    $corrida_atualizada = parent::atualizarCorrida($corrida->getUuid(), $dados_atualizar);
+
     return true;
   }
 
