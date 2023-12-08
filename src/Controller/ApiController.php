@@ -30,7 +30,6 @@ class ApiController
       return $presenter->error('Não foi possível autorizar a corrida.');
     }
 
-    
     $this->inserirCorrida($corrida->toArray());
     return $presenter->success();
   }
@@ -149,7 +148,6 @@ class ApiController
         $horarioPico,
         $autenticacao,
       );
-      
       
       $corrida->setStatus($status);
       $corrida->setData($data_criacao);

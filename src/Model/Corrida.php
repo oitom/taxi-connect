@@ -146,7 +146,7 @@ class Corrida
   public function getTipoPagamento() { return $this->tipoPagamento; }
   public function getAutenticacao() { return $this->autenticacao; }
   public function getHorarioPico() { return $this->horarioPico; }
-  
+
   public function getData() { return date('Y-m-d H:i:s'); }
   public function setData($data) { return $this->data = $data; }
 
@@ -161,23 +161,22 @@ class Corrida
 
   public function toArray()
   {
-      $reflection = new \ReflectionClass($this);
-      $properties = $reflection->getProperties(\ReflectionProperty::IS_PRIVATE);
+    $reflection = new \ReflectionClass($this);
+    $properties = $reflection->getProperties(\ReflectionProperty::IS_PRIVATE);
 
-      $result = [];
+    $result = [];
 
-      foreach ($properties as $property) {
-          $property->setAccessible(true);
-          $value = $property->getValue($this);
+    foreach ($properties as $property) {
+      $property->setAccessible(true);
+      $value = $property->getValue($this);
 
-          // Se o valor for um objeto, chamamos o método toArray se existir
-          if (is_object($value) && method_exists($value, 'toArray')) {
-              $result[$property->getName()] = $value->toArray();
-          } else {
-              $result[$property->getName()] = $value;
-          }
+      if (is_object($value) && method_exists($value, 'toArray')) {
+        $result[$property->getName()] = $value->toArray();
+      } else {
+        $result[$property->getName()] = $value;
       }
+    }
 
-      return $result;
+    return $result;
   }
 }
