@@ -42,27 +42,93 @@ docker-compose run web composer install
 docker exec -it taxi-connect-web-1 vendor/bin/phpunit --coverage-html=coverage/
 ```
 
-## Utilização
-Testando a API
+## Testando a API
 Você pode usar ferramentas como Postman ou curl para testar as chamadas da API. Certifique-se de incluir os cabeçalhos CLIENT_ID e CLIENT_SECRET nas suas solicitações.
 
-### Exemplo de solicitação cURL GET:
-
+- client_id: 
 ```
-curl -X GET -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" http://localhost:8080/
-```
-### Exemplo de solicitação cURL POST:
-
-```
-curl -X POST -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" -d "param1=valor1&param2=valor2" http://localhost:8080/
-```
-### Exemplo de solicitação cURL DELETE:
-
-```
-curl -X DELETE -H "CLIENT_ID: seu_cliente_id" -H "CLIENT_SECRET: seu_cliente_secret" http://localhost:8080/
+taxiconnect
 ```
 
-#### Lembre-se de substituir seu_cliente_id, seu_cliente_secret e pelos valores reais do seu client.
+- client_secret: 
+```
+550e8400-e29b-41d4-a716-446655440000
+```
+
+
+### Listar corridas:
+```
+curl --location 'http://localhost:8080/' \
+--header 'CLIENT_ID: taxiconnect' \
+--header 'CLIENT_SECRET: 550e8400-e29b-41d4-a716-446655440000'
+```
+
+### Listar corridas por UUID:
+```
+curl --location 'http://localhost:8080/?uuid=81397774-c68f-4931-bf68-0817ecaaef72' \
+--header 'CLIENT_ID: taxiconnect' \
+--header 'CLIENT_SECRET: 550e8400-e29b-41d4-a716-446655440000'
+```
+
+### Criar corrida:
+```
+curl --location 'http://localhost:8080/' \
+--header 'CLIENT_ID: taxiconnect' \
+--header 'CLIENT_SECRET: 550e8400-e29b-41d4-a716-446655440000' \
+--header 'Content-Type: application/json' \
+--data '{
+  "corrida": {
+    "origem": {
+      "latitude": 32.7749,
+      "longitude": -122.4194,
+      "endereco": "123 Main Street, Cidade A"
+    },
+    "destino": {
+      "latitude": 37.3352,
+      "longitude": -121.8811,
+      "endereco": "456 Oak Street, Cidade B"
+    },
+    "passageiro": {
+      "cpf": "451.643.942-24",
+      "nome": "João Silva",
+      "telefone": "+551234567890"
+    },
+    "motorista": {
+      "cnpj": "12.124.543.0001/20",
+      "nome": "Maria Joana Oliveira",
+      "placaVeiculo": "ABC123",
+      "modeloVeiculo": "Toyota Corolla"
+    },
+    "tipoCorrida": "taximetro",
+    "precoEstimado": 20,
+    "horarioPico": false,
+    "tipoPagamento": "cartao_credito",
+    "autenticacao": {
+      "token_acesso": "token123",
+      "chave_seguranca": "segredo456"
+    }
+  }
+}'
+```
+Para o tipo preço fixo, utilizar o valor  "preco_fixo" no campo "tipoCorrida"
+```
+"corrida": {
+  "tipoCorrida": "preco_fixo"
+}
+```
+
+### Ativar corrida:
+```
+curl --location --request PATCH 'http://localhost:8080/?uuid=385b0c25-8ea9-4cd1-b615-627c9f974a68' \
+--header 'CLIENT_ID: taxiconnect' \
+--header 'CLIENT_SECRET: 550e8400-e29b-41d4-a716-446655440000'
+```
+### Cancelar corrida:
+```
+curl --location --request DELETE 'http://localhost:8080/?uuid=385b0c25-8ea9-4cd1-b615-627c9f974a68' \
+--header 'CLIENT_ID: taxiconnect' \
+--header 'CLIENT_SECRET: 550e8400-e29b-41d4-a716-446655440000'
+```
 
 ## Encerrando o Ambiente
 Para encerrar o ambiente Docker, execute:
