@@ -1,5 +1,5 @@
 # Use a imagem oficial do PHP 8 com Apache
-FROM php:8.1-alpine
+FROM php:8.0-apache
 
 # Instale as dependências necessárias
 RUN apt-get update \
