@@ -2,6 +2,8 @@ version: '3'
 
 services:
   web:
+    environment:
+      XDEBUG_MODE: coverage
     build:
       context: .
       dockerfile: Dockerfile

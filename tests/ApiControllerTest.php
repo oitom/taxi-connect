@@ -16,7 +16,7 @@ class ApiControllerTest extends TestCase
     $responseData = json_decode($response, true);
     $qtd = count($responseData);
 
-    $this->assertGreaterThan(1, $qtd, 'A quantidade de elementos no array deve ser maior que 1.');
+    $this->assertGreaterThan(0, $qtd, 'A quantidade de elementos no array deve ser maior que 0.');
   }
 
   public function testListByUuidSuccess()

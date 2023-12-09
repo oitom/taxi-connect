@@ -31,6 +31,13 @@ docker-compose run web composer install
 
 5. Acesse a aplicação em http://localhost:8080.
 
+## Rodar os testes com PHPUnit
+
+1. Copie o comando abaixo e rode no terminal
+```
+docker exec -it taxi-connect-web-1 vendor/bin/phpunit --coverage-html=/var/www/html/coverage
+```
+
 ## Utilização
 Testando a API
 Você pode usar ferramentas como Postman ou curl para testar as chamadas da API. Certifique-se de incluir os cabeçalhos CLIENT_ID e CLIENT_SECRET nas suas solicitações.
