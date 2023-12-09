@@ -4,21 +4,34 @@ on:
   push:
     branches:
       - main
+
 jobs:
-  environment:
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - name: Test environment variable
-        run: echo $CODECOV_TOKEN
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   build:
     runs-on: ubuntu-latest
-    environment: dev
-    needs: environment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run PHPUnit tests with coverage
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+
+  upload-coverage:
+    runs-on: ubuntu-latest
+
+    needs: build
+
     steps:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
