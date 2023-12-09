@@ -28,10 +28,6 @@ class Motorista
     }
   }
 
-  public function getNome() { return $this->nome; }
-  public function getPlacaVeiculo() { return $this->placaVeiculo; }
-  public function getModeloVeiculo() { return $this->modeloVeiculo; }
-
   public function toArray()
   {
     return [

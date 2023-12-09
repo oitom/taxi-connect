@@ -47,14 +47,6 @@ class Corrida
     $this->autenticacao = $autenticacao;
   }
   
-  public function calcularPreco()
-  {
-    $taxaFixa = 2.5;
-    $this->precoEstimado = $taxaFixa * $this->calcularDistancia();
-
-    return $this->precoEstimado;
-  }
-
   public function autenticarCorrida()
   {
     $tokenEsperado = "token123";
@@ -92,18 +84,6 @@ class Corrida
   {
     $distancia = 10.0;
     return $distancia;
-  }
-
-  public function getValorTarifa()
-  {
-    $precoEstimado = $this->getPrecoEstimado();
-
-    if($this->getTipoCorrida() == "taximetro")
-      $valorTarifa = 2.5;
-    else
-      $valorTarifa = $precoEstimado * 1.2;
-    
-    return $valorTarifa;
   }
 
   public function getTarifaExtraHorarioPico()

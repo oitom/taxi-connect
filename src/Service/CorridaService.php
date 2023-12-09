@@ -8,9 +8,6 @@ use Model\Corrida;
 
 class CorridaService 
 {
-  public function __construct() {
-  }
-  
   protected function criarCorrida($dados, $tipo = "criar", $status = ""): array
   {    
     try {
@@ -51,8 +48,6 @@ class CorridaService
       return ["corrida" => $corrida, "error" => false];
     } catch (\InvalidArgumentException $e) {
       return ["corrida" => null, "error" => true, "msg" => $e->getMessage()];
-    } catch (\Exception $e) {
-      return ["corrida" => null, "error" => true, "msg" => "Erro desconhecido"];
     }
   }
 
@@ -66,8 +61,6 @@ class CorridaService
       return new Passageiro($cpf, $nome, $telefone);
     } catch (\InvalidArgumentException $e) {
       throw $e;
-    } catch (\Exception $e) {
-      throw new \Exception("Erro ao criar Passageiro", 0, $e);
     }
   }
   
@@ -82,8 +75,6 @@ class CorridaService
       return new Motorista($cnpj, $nome, $placaVeiculo, $modeloVeiculo);
     } catch (\InvalidArgumentException $e) {
       throw $e;
-    } catch (\Exception $e) {
-      throw new \Exception("Erro ao criar Motorista", 0, $e);
     }
   }
 
@@ -130,6 +121,5 @@ class CorridaService
         return $this->criarCorrida(["corrida" => $corrida], "carregar", $corrida["status"]);
       }
     }
-    return null;
   }
 }

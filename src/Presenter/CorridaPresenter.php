@@ -32,13 +32,17 @@ class CorridaPresenter
   public function success() {
     $status = $this->corrida->getStatus();
 
+    if($status == "autorizada")
+      $code = 201;
+    else 
+      $code = 200;
+  
     $response = array(
-      'code' => 201,
+      'code' => $code,
       'message' => "Corrida $status com sucesso!",
       'data'=> $this->dadosToArray()
     );
-
-    http_response_code(201);
+    http_response_code($code);
     return json_encode($response,  JSON_PRETTY_PRINT);
   }
 

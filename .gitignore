@@ -16,6 +16,8 @@ build/
 # Ignora arquivos temporários
 *.swp
 
+coverage/*
+
 # Ignora arquivos de configuração do ambiente
 .env
 .env.local

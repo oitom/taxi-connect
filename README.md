@@ -35,7 +35,7 @@ docker-compose run web composer install
 
 1. Gerando um reltório de cobertura de testes phpunit
 ```
-docker exec -it taxi-connect-web-1 vendor/bin/phpunit --coverage-html=tests/coverage/
+docker exec -it taxi-connect-web-1 vendor/bin/phpunit --coverage-html=coverage/
 ```
 
 ## Utilização

@@ -24,10 +24,6 @@ class Passageiro
     }
   }
 
-  public function getCPF() { return $this->cpf; }
-  public function getNome() { return $this->nome; }
-  public function getTelefone() { return $this->telefone; }
-
   public function toArray()
   {
     return [
