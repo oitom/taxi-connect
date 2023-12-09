@@ -20,7 +20,6 @@ RUN a2enmod rewrite
 
 # Configure o diretório raiz do Apache
 WORKDIR /var/www/html
-RUN chmod 777 /var/www/html/data
 
 # Copie os arquivos da aplicação para o contêiner
 COPY . .
@@ -30,6 +29,7 @@ COPY composer.json /var/www/html/
 
 # Instala as dependências do Composer
 RUN composer install --no-scripts
+RUN chmod 777 /var/www/html/data
 
 # Comando padrão para iniciar o Apache (entrypoint do Apache)
 CMD ["apache2-foreground"]

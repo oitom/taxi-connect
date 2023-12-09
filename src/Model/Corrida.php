@@ -67,6 +67,8 @@ class Corrida
     ) {
       return true;
     } else {
+      $this->setStatus("Não autenticado");
+      $this->setStatusDesc("Credenciais de autenticação invalidas");
       return false;
     }
   }

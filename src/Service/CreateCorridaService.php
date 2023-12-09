@@ -25,12 +25,16 @@ class CreateCorridaService extends CorridaService
   {
     $corrida = $dados["corrida"];
 
-    $presenter = new CorridaPresenter($corrida, ['uuid', 'origem', 'destino', 'tipoCorrida', 'preco', 'status', 'data']);
+    $presenter = new CorridaPresenter($corrida, ['uuid', 'origem', 'destino', 'tipoCorrida', 'preco', 'status', 'statusDesc', 'data']);
 
     if($dados["error"]) {
       return $presenter->error($dados["msg"]);
     }
     
+    if(!$this->autenticarCorrida($corrida)) {
+      return $presenter->error('Não foi possível autorizar a corrida.');
+    }
+
     if(!$this->calculaPreco($corrida)) {
       return $presenter->error('Não foi possível calcular o valor da corrida. Campo tipo_corrida invalido!');
     }
@@ -40,6 +44,8 @@ class CreateCorridaService extends CorridaService
     }
 
     $this->inserirCorrida($corrida->toArray());
+    $this->autorizaCorrida($corrida);
+    
     return $presenter->success();
   }
 
@@ -102,7 +108,6 @@ class CreateCorridaService extends CorridaService
       return false;
     }
 
-    $corrida->setStatus('autorizada');
     return true;
   }
 
@@ -111,6 +116,27 @@ class CreateCorridaService extends CorridaService
     $corridas = parent::getCorridas();
     $corridas[] = $corrida;
     parent::setCorridas($corridas);
+    return true;
+  }
+
+  private function autenticarCorrida(Corrida $corrida)
+  {
+    return $corrida->autenticarCorrida();
+  }
+
+  private function autorizaCorrida(Corrida $corrida)
+  {
+    $data_autorizada = date("Y-m-d H:i:s");
+
+    $dados_atualizar = array(
+      "status" => "autorizada",
+      "statusDesc" => "A corrida foi autorizada em $data_autorizada",
+    );
+
+    $corrida->setStatus($dados_atualizar["status"]);
+    $corrida->setStatusDesc($dados_atualizar["statusDesc"]);
+    $corrida_atualizada = parent::atualizarCorrida($corrida->getUuid(), $dados_atualizar);
+
     return true;
   }
 }

@@ -24,6 +24,7 @@ class Router
     $queryParams = $_GET;
     $method = $_SERVER['REQUEST_METHOD'];
     $body = json_decode(file_get_contents("php://input"), true);
+    
     switch ($method) {
       case 'GET':
         echo $controller->list($queryParams);

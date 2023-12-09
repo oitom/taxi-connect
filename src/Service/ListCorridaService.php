@@ -2,7 +2,6 @@
 
 namespace Service;
 
-use Model\Corrida;
 use Presenter\CorridaPresenter;
 
 class ListCorridaService extends CorridaService
