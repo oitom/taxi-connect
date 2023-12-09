@@ -20,10 +20,7 @@ build/
 .env
 .env.local
 .env.*.local
-
-# Ignora os arquivos de dependências do Composer
-composer.lock
-
+.phpunit
 # Ignora o diretório de instalação do Composer
 vendor/
 

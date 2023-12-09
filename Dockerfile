@@ -1,5 +1,5 @@
 # Use a imagem oficial do PHP 8 com Apache
-FROM php:8.0-apache
+FROM php:8.1-alpine
 
 # Instale as dependências necessárias
 RUN apt-get update \
@@ -28,7 +28,7 @@ COPY . .
 COPY composer.json /var/www/html/
 
 # Instala as dependências do Composer
-RUN composer install --no-scripts
+RUN composer install --dev
 RUN chmod 777 /var/www/html/data
 
 # Comando padrão para iniciar o Apache (entrypoint do Apache)

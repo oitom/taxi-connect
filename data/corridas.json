@@ -322,5 +322,77 @@
         "status": "autorizada",
         "statusDesc": "A corrida foi autorizada em 2023-12-09 00:17:40",
         "data": "2023-12-09 00:17:39"
+    },
+    {
+        "uuid": "6dbf694c-3fa4-404d-ad9d-1470557aa16a",
+        "origem": {
+            "latitude": 32.7749,
+            "longitude": -122.4194,
+            "endereco": "123 Main Street, Cidade A"
+        },
+        "destino": {
+            "latitude": 37.3352,
+            "longitude": -121.8811,
+            "endereco": "456 Oak Street, Cidade B"
+        },
+        "passageiro": {
+            "cpf": "451.643.942-24",
+            "nome": "Jo\u00e3o Silva",
+            "telefone": "+551234567890"
+        },
+        "motorista": {
+            "cnpj": "12.124.543.0001\/20",
+            "nome": "Maria Joana Oliveira",
+            "placaVeiculo": "ABC123",
+            "modeloVeiculo": "Toyota Corolla"
+        },
+        "tipoCorrida": "taximetro",
+        "precoEstimado": 20,
+        "preco": 23,
+        "tipoPagamento": "cartao_credito",
+        "autenticacao": {
+            "token_acesso": "token123",
+            "chave_seguranca": "segredo456"
+        },
+        "horarioPico": false,
+        "status": "autorizada",
+        "statusDesc": "A corrida foi autorizada em 2023-12-09 00:31:31",
+        "data": "2023-12-09 00:31:31"
+    },
+    {
+        "uuid": "741ffcb8-b52c-4166-a945-d9eb773999dd",
+        "origem": {
+            "latitude": 32.7749,
+            "longitude": -122.4194,
+            "endereco": "123 Main Street, Cidade A"
+        },
+        "destino": {
+            "latitude": 37.3352,
+            "longitude": -121.8811,
+            "endereco": "456 Oak Street, Cidade B"
+        },
+        "passageiro": {
+            "cpf": "451.643.942-24",
+            "nome": "Jo\u00e3o Silva",
+            "telefone": "+551234567890"
+        },
+        "motorista": {
+            "cnpj": "12.124.543.0001\/20",
+            "nome": "Maria Joana Oliveira",
+            "placaVeiculo": "ABC123",
+            "modeloVeiculo": "Toyota Corolla"
+        },
+        "tipoCorrida": "taximetro",
+        "precoEstimado": 20,
+        "preco": 23,
+        "tipoPagamento": "cartao_credito",
+        "autenticacao": {
+            "token_acesso": "token123",
+            "chave_seguranca": "segredo456"
+        },
+        "horarioPico": false,
+        "status": "autorizada",
+        "statusDesc": "A corrida foi autorizada em 2023-12-09 00:43:48",
+        "data": "2023-12-09 00:43:47"
     }
 ]
