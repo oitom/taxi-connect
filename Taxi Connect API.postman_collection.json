@@ -1,0 +1,690 @@
+{
+	"info": {
+		"_postman_id": "b168cb02-fe31-463f-abbf-c52a90e63d04",
+		"name": "Taxi Connect API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6986567"
+	},
+	"item": [
+		{
+			"name": "Success",
+			"item": [
+				{
+					"name": "get corridas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get corrida por UUID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid=81397774-c68f-4931-bf68-0817ecaaef72",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "81397774-c68f-4931-bf68-0817ecaaef72"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - taximetro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var body = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"UUID\", body.data.uuid);\r",
+									"console.log(body.data.uuid);\r",
+									"\r",
+									"pm.test(\"UUID: \" + body.data.uuid , function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 32.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"cpf\": \"451.643.942-24\",\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"cnpj\": \"12.124.543.0001/20\",\r\n      \"nome\": \"Maria Joana Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"tipoCorrida\": \"taximetro\",\r\n    \"precoEstimado\": 20,\r\n    \"horarioPico\": false,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123\",\r\n      \"chave_seguranca\": \"segredo456\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - preco fixo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var body = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"UUID\", body.data.uuid);\r",
+									"console.log(body.data.uuid);\r",
+									"\r",
+									"pm.test(\"UUID: \" + body.data.uuid , function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 37.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"cpf\": \"451.643.942-24\",\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"cnpj\": \"12.124.543.0001/20\",\r\n      \"nome\": \"Maria Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"tipoCorrida\": \"preco_fixo\",\r\n    \"precoEstimado\": 30,\r\n    \"horarioPico\": false,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123\",\r\n      \"chave_seguranca\": \"segredo456\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelar corrida",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid={{UUID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "{{UUID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar corrida",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid={{UUID}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "{{UUID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Erros",
+			"item": [
+				{
+					"name": "get corrida por UUID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid=123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - erro limite dif preco x estimado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 32.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"cpf\": \"451.643.942-24\",\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"cnpj\": \"12.124.543.0001/20\",\r\n      \"nome\": \"Maria Joana Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"tipoCorrida\": \"taximetro\",\r\n    \"precoEstimado\": 50,\r\n    \"horarioPico\": false,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123\",\r\n      \"chave_seguranca\": \"segredo456\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - erro horario de pico",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 32.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"cpf\": \"451.643.942-24\",\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"cnpj\": \"12.124.543.0001/20\",\r\n      \"nome\": \"Maria Joana Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"tipoCorrida\": \"taximetro\",\r\n    \"precoEstimado\": 30,\r\n    \"horarioPico\": true,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123\",\r\n      \"chave_seguranca\": \"segredo456\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - erro tipo corrida",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 32.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"cpf\": \"451.643.942-24\",\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"cnpj\": \"12.124.543.0001/20\",\r\n      \"nome\": \"Maria Joana Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"precoEstimado\": 30,\r\n    \"horarioPico\": false,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123\",\r\n      \"chave_seguranca\": \"segredo456\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - erro credenciais",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 32.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"cpf\": \"451.643.942-24\",\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"cnpj\": \"12.124.543.0001/20\",\r\n      \"nome\": \"Maria Joana Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"tipoCorrida\": \"taximetro\",\r\n    \"precoEstimado\": 30,\r\n    \"horarioPico\": false,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123567\",\r\n      \"chave_seguranca\": \"segredo456678\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - erro passageiro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 32.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"cnpj\": \"12.124.543.0001/20\",\r\n      \"nome\": \"Maria Joana Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"tipoCorrida\": \"taximetro\",\r\n    \"precoEstimado\": 30,\r\n    \"horarioPico\": false,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123\",\r\n      \"chave_seguranca\": \"segredo456\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cadastrar corrida - erro motorista",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"corrida\": {\r\n    \"origem\": {\r\n      \"latitude\": 32.7749,\r\n      \"longitude\": -122.4194,\r\n      \"endereco\": \"123 Main Street, Cidade A\"\r\n    },\r\n    \"destino\": {\r\n      \"latitude\": 37.3352,\r\n      \"longitude\": -121.8811,\r\n      \"endereco\": \"456 Oak Street, Cidade B\"\r\n    },\r\n    \"passageiro\": {\r\n      \"cpf\": \"451.643.942-24\",\r\n      \"nome\": \"João Silva\",\r\n      \"telefone\": \"+551234567890\"\r\n    },\r\n    \"motorista\": {\r\n      \"nome\": \"Maria Joana Oliveira\",\r\n      \"placaVeiculo\": \"ABC123\",\r\n      \"modeloVeiculo\": \"Toyota Corolla\"\r\n    },\r\n    \"tipoCorrida\": \"taximetro\",\r\n    \"precoEstimado\": 30,\r\n    \"horarioPico\": false,\r\n    \"tipoPagamento\": \"cartao_credito\",\r\n    \"autenticacao\": {\r\n      \"token_acesso\": \"token123\",\r\n      \"chave_seguranca\": \"segredo456\"\r\n    }\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelar corrida - erro ja cancelada",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid=00f37b57-4122-4530-ba19-83fac18debfe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "00f37b57-4122-4530-ba19-83fac18debfe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelar corrida - erro ja ativada",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid=e894be4f-4dad-4170-abbe-38e2a403c3f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "e894be4f-4dad-4170-abbe-38e2a403c3f4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar corrida - erro ja cancelada",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid=00f37b57-4122-4530-ba19-83fac18debfe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "00f37b57-4122-4530-ba19-83fac18debfe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativar corrida - erro ja ativada",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "CLIENT_ID",
+								"value": "taxiconnect",
+								"type": "text"
+							},
+							{
+								"key": "CLIENT_SECRET",
+								"value": "550e8400-e29b-41d4-a716-446655440000",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/?uuid=e894be4f-4dad-4170-abbe-38e2a403c3f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "e894be4f-4dad-4170-abbe-38e2a403c3f4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "UUID",
+			"value": "a"
+		}
+	]
+}
