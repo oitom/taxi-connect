@@ -14,6 +14,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Instale o SDK da AWS usando o Composer
 RUN composer require aws/aws-sdk-php
+RUN composer require --dev phpunit/php-code-coverage
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Ative o módulo rewrite do Apache
 RUN a2enmod rewrite

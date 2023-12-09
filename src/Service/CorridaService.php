@@ -89,13 +89,15 @@ class CorridaService
 
   protected function getCorridas()
   {
-    $jsonFilePath = '/var/www/html/data/corridas.json';
+    // $jsonFilePath = '/var/www/html/data/corridas.json';
+    $jsonFilePath = __DIR__ . '/../../data/corridas.json';
     return file_exists($jsonFilePath) ? json_decode(file_get_contents($jsonFilePath), true) : [];
   }
 
   protected function setCorridas($corridas)
   {
-    $jsonFilePath = '/var/www/html/data/corridas.json';
+    // $jsonFilePath = '/var/www/html/data/corridas.json';
+    $jsonFilePath = __DIR__ . '/../../data/corridas.json';
     file_put_contents($jsonFilePath, json_encode($corridas, JSON_PRETTY_PRINT));
   }
 

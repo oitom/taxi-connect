@@ -14,7 +14,7 @@ class ListCorridaService extends CorridaService
 
   public function list()
   {
-    if ($this->params['uuid'] == null) {
+    if (!isset($this->params['uuid'])) {
       $response = parent::getCorridas();
       $presenter = new CorridaPresenter(null, null);
       return $presenter->toAll($response);

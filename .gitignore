@@ -20,7 +20,7 @@ build/
 .env
 .env.local
 .env.*.local
-.phpunit
+.phpunit.result.cache
 # Ignora o diretório de instalação do Composer
 vendor/
 
