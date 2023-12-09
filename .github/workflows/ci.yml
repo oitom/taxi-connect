@@ -1,4 +1,24 @@
-- name: Upload coverage reports to Codecov
-  uses: codecov/codecov-action@v3
-  env:
-    CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+name: Jets Workflow
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  environment:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Test environment variable
+        run: echo $CODECOV_TOKEN
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  build:
+    runs-on: ubuntu-latest
+    environment: dev
+    needs: environment
+    steps:
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
