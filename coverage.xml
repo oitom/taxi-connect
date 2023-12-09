@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1702156515">
+  <project timestamp="1702156515">
+    <file name="/var/www/html/src/Controller/ApiController.php">
+      <class name="Controller\ApiController" namespace="global">
+        <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="16" coveredelements="16"/>
+      </class>
+      <line num="12" type="method" name="list" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="14" type="stmt" count="3"/>
+      <line num="15" type="stmt" count="3"/>
+      <line num="17" type="stmt" count="3"/>
+      <line num="20" type="method" name="create" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="22" type="stmt" count="11"/>
+      <line num="23" type="stmt" count="11"/>
+      <line num="25" type="stmt" count="11"/>
+      <line num="28" type="method" name="cancel" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="30" type="stmt" count="5"/>
+      <line num="31" type="stmt" count="5"/>
+      <line num="33" type="stmt" count="5"/>
+      <line num="36" type="method" name="activate" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="38" type="stmt" count="4"/>
+      <line num="39" type="stmt" count="4"/>
+      <line num="41" type="stmt" count="4"/>
+      <metrics loc="43" ncloc="43" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="16" coveredelements="16"/>
+    </file>
+    <file name="/var/www/html/src/Model/Corrida.php">
+      <class name="Model\Corrida" namespace="global">
+        <metrics complexity="38" methods="29" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="78" coveredstatements="78" elements="107" coveredelements="107"/>
+      </class>
+      <line num="26" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
+      <line num="28" type="stmt" count="15"/>
+      <line num="29" type="stmt" count="15"/>
+      <line num="30" type="stmt" count="15"/>
+      <line num="31" type="stmt" count="15"/>
+      <line num="32" type="stmt" count="15"/>
+      <line num="33" type="stmt" count="14"/>
+      <line num="34" type="stmt" count="14"/>
+      <line num="35" type="stmt" count="14"/>
+      <line num="37" type="stmt" count="14"/>
+      <line num="38" type="stmt" count="14"/>
+      <line num="39" type="stmt" count="14"/>
+      <line num="40" type="stmt" count="14"/>
+      <line num="41" type="stmt" count="14"/>
+      <line num="42" type="stmt" count="14"/>
+      <line num="43" type="stmt" count="14"/>
+      <line num="44" type="stmt" count="14"/>
+      <line num="45" type="stmt" count="14"/>
+      <line num="46" type="stmt" count="14"/>
+      <line num="47" type="stmt" count="14"/>
+      <line num="50" type="method" name="autenticarCorrida" visibility="public" complexity="5" crap="5" count="8"/>
+      <line num="52" type="stmt" count="8"/>
+      <line num="53" type="stmt" count="8"/>
+      <line num="55" type="stmt" count="8"/>
+      <line num="56" type="stmt" count="8"/>
+      <line num="57" type="stmt" count="8"/>
+      <line num="58" type="stmt" count="8"/>
+      <line num="60" type="stmt" count="7"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <line num="68" type="method" name="validarCampo" visibility="private" complexity="2" crap="2" count="15"/>
+      <line num="70" type="stmt" count="15"/>
+      <line num="71" type="stmt" count="1"/>
+      <line num="75" type="method" name="getTarifaPorDistancia" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="77" type="stmt" count="5"/>
+      <line num="78" type="stmt" count="5"/>
+      <line num="80" type="stmt" count="5"/>
+      <line num="83" type="method" name="calcularDistancia" visibility="private" complexity="1" crap="1" count="5"/>
+      <line num="85" type="stmt" count="5"/>
+      <line num="86" type="stmt" count="5"/>
+      <line num="89" type="method" name="getTarifaExtraHorarioPico" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="92" type="stmt" count="1"/>
+      <line num="95" type="method" name="getTarifaExtraLocalDificilAcesso" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="97" type="stmt" count="5"/>
+      <line num="98" type="stmt" count="5"/>
+      <line num="101" type="method" name="getTempo" visibility="public" complexity="2" crap="2" count="5"/>
+      <line num="103" type="stmt" count="5"/>
+      <line num="104" type="stmt" count="5"/>
+      <line num="106" type="stmt" count="5"/>
+      <line num="107" type="stmt" count="1"/>
+      <line num="109" type="stmt" count="5"/>
+      <line num="112" type="method" name="getTarifaExtraTempoExcedido" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="114" type="stmt" count="5"/>
+      <line num="115" type="stmt" count="5"/>
+      <line num="116" type="stmt" count="5"/>
+      <line num="118" type="stmt" count="5"/>
+      <line num="121" type="method" name="getUuid" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="122" type="method" name="setUuid" visibility="public" complexity="1" crap="1" count="10"/>
+      <line num="124" type="method" name="getOrigem" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="125" type="method" name="getDestino" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="126" type="method" name="getPassageiro" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="127" type="method" name="getMotorista" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="128" type="method" name="getTipoCorrida" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="129" type="method" name="getPrecoEstimado" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="130" type="method" name="getTipoPagamento" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="131" type="method" name="getAutenticacao" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="132" type="method" name="getHorarioPico" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="134" type="method" name="getData" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="135" type="method" name="setData" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="137" type="method" name="getStatus" visibility="public" complexity="1" crap="1" count="13"/>
+      <line num="138" type="method" name="setStatus" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="140" type="method" name="getStatusDesc" visibility="public" complexity="1" crap="1" count="13"/>
+      <line num="141" type="method" name="setStatusDesc" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="143" type="method" name="getPreco" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="144" type="method" name="setPreco" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="146" type="method" name="toArray" visibility="public" complexity="4" crap="4" count="5"/>
+      <line num="148" type="stmt" count="5"/>
+      <line num="149" type="stmt" count="5"/>
+      <line num="151" type="stmt" count="5"/>
+      <line num="153" type="stmt" count="5"/>
+      <line num="154" type="stmt" count="5"/>
+      <line num="155" type="stmt" count="5"/>
+      <line num="157" type="stmt" count="5"/>
+      <line num="158" type="stmt" count="5"/>
+      <line num="160" type="stmt" count="5"/>
+      <line num="164" type="stmt" count="5"/>
+      <metrics loc="166" ncloc="166" classes="1" methods="29" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="78" coveredstatements="78" elements="107" coveredelements="107"/>
+    </file>
+    <file name="/var/www/html/src/Model/Motorista.php">
+      <class name="Model\Motorista" namespace="global">
+        <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="19" coveredelements="19"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
+      <line num="13" type="stmt" count="16"/>
+      <line num="14" type="stmt" count="15"/>
+      <line num="15" type="stmt" count="15"/>
+      <line num="16" type="stmt" count="15"/>
+      <line num="18" type="stmt" count="15"/>
+      <line num="19" type="stmt" count="15"/>
+      <line num="20" type="stmt" count="15"/>
+      <line num="21" type="stmt" count="15"/>
+      <line num="24" type="method" name="validarCampo" visibility="private" complexity="3" crap="3" count="16"/>
+      <line num="26" type="stmt" count="16"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="31" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="33" type="stmt" count="5"/>
+      <line num="34" type="stmt" count="5"/>
+      <line num="35" type="stmt" count="5"/>
+      <line num="36" type="stmt" count="5"/>
+      <line num="37" type="stmt" count="5"/>
+      <line num="38" type="stmt" count="5"/>
+      <metrics loc="40" ncloc="40" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="19" coveredelements="19"/>
+    </file>
+    <file name="/var/www/html/src/Model/Passageiro.php">
+      <class name="Model\Passageiro" namespace="global">
+        <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="15" coveredelements="15"/>
+      </class>
+      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="17"/>
+      <line num="12" type="stmt" count="17"/>
+      <line num="13" type="stmt" count="16"/>
+      <line num="15" type="stmt" count="16"/>
+      <line num="16" type="stmt" count="16"/>
+      <line num="17" type="stmt" count="16"/>
+      <line num="20" type="method" name="validarCampo" visibility="private" complexity="3" crap="3" count="17"/>
+      <line num="22" type="stmt" count="17"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="27" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="29" type="stmt" count="5"/>
+      <line num="30" type="stmt" count="5"/>
+      <line num="31" type="stmt" count="5"/>
+      <line num="32" type="stmt" count="5"/>
+      <line num="33" type="stmt" count="5"/>
+      <metrics loc="35" ncloc="35" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="15" coveredelements="15"/>
+    </file>
+    <file name="/var/www/html/src/Presenter/CorridaPresenter.php">
+      <class name="Presenter\CorridaPresenter" namespace="global">
+        <metrics complexity="9" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="49" coveredelements="49"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="21"/>
+      <line num="13" type="stmt" count="21"/>
+      <line num="14" type="stmt" count="21"/>
+      <line num="17" type="method" name="error" visibility="public" complexity="2" crap="2" count="15"/>
+      <line num="18" type="stmt" count="15"/>
+      <line num="19" type="stmt" count="15"/>
+      <line num="20" type="stmt" count="15"/>
+      <line num="21" type="stmt" count="15"/>
+      <line num="23" type="stmt" count="15"/>
+      <line num="24" type="stmt" count="9"/>
+      <line num="25" type="stmt" count="9"/>
+      <line num="28" type="stmt" count="15"/>
+      <line num="29" type="stmt" count="15"/>
+      <line num="32" type="method" name="success" visibility="public" complexity="2" crap="2" count="4"/>
+      <line num="33" type="stmt" count="4"/>
+      <line num="35" type="stmt" count="4"/>
+      <line num="36" type="stmt" count="4"/>
+      <line num="38" type="stmt" count="2"/>
+      <line num="40" type="stmt" count="4"/>
+      <line num="41" type="stmt" count="4"/>
+      <line num="42" type="stmt" count="4"/>
+      <line num="43" type="stmt" count="4"/>
+      <line num="44" type="stmt" count="4"/>
+      <line num="45" type="stmt" count="4"/>
+      <line num="46" type="stmt" count="4"/>
+      <line num="49" type="method" name="dadosToArray" visibility="public" complexity="2" crap="2" count="4"/>
+      <line num="51" type="stmt" count="4"/>
+      <line num="52" type="stmt" count="4"/>
+      <line num="53" type="stmt" count="4"/>
+      <line num="54" type="stmt" count="4"/>
+      <line num="55" type="stmt" count="4"/>
+      <line num="56" type="stmt" count="4"/>
+      <line num="57" type="stmt" count="4"/>
+      <line num="58" type="stmt" count="4"/>
+      <line num="59" type="stmt" count="4"/>
+      <line num="60" type="stmt" count="4"/>
+      <line num="61" type="stmt" count="4"/>
+      <line num="62" type="stmt" count="4"/>
+      <line num="63" type="stmt" count="4"/>
+      <line num="64" type="stmt" count="4"/>
+      <line num="65" type="stmt" count="4"/>
+      <line num="67" type="stmt" count="4"/>
+      <line num="68" type="stmt" count="4"/>
+      <line num="71" type="stmt" count="4"/>
+      <line num="74" type="method" name="toAllArray" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="76" type="stmt" count="1"/>
+      <line num="77" type="stmt" count="1"/>
+      <line num="80" type="method" name="toAll" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="82" type="stmt" count="1"/>
+      <metrics loc="85" ncloc="85" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="49" coveredelements="49"/>
+    </file>
+    <file name="/var/www/html/src/Router/Router.php">
+      <class name="Router\Router" namespace="global">
+        <metrics complexity="12" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="32" coveredelements="0"/>
+      </class>
+      <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="15" type="stmt" count="0"/>
+      <line num="18" type="method" name="handleRequest" visibility="public" complexity="6" crap="42" count="0"/>
+      <line num="20" type="stmt" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="31" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="38" type="stmt" count="0"/>
+      <line num="40" type="stmt" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="47" type="method" name="authenticate" visibility="private" complexity="5" crap="30" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="52" type="stmt" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <line num="56" type="stmt" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="58" type="stmt" count="0"/>
+      <metrics loc="62" ncloc="62" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="32" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/src/Service/AticvateCorridaService.php">
+      <class name="Service\AticvateCorridaService" namespace="global">
+        <metrics complexity="8" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="31" coveredelements="31"/>
+      </class>
+      <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="13" type="stmt" count="4"/>
+      <line num="16" type="method" name="aticvate" visibility="public" complexity="3" crap="3" count="4"/>
+      <line num="18" type="stmt" count="4"/>
+      <line num="19" type="stmt" count="4"/>
+      <line num="20" type="stmt" count="4"/>
+      <line num="22" type="stmt" count="4"/>
+      <line num="24" type="stmt" count="4"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="3"/>
+      <line num="30" type="stmt" count="3"/>
+      <line num="31" type="stmt" count="2"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="39" type="method" name="podeAtivarCorrida" visibility="private" complexity="3" crap="3" count="3"/>
+      <line num="41" type="stmt" count="3"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="2"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="53" type="method" name="ativarCorrida" visibility="private" complexity="1" crap="1" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <metrics loc="66" ncloc="66" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="31" coveredelements="31"/>
+    </file>
+    <file name="/var/www/html/src/Service/CancelCorridaService.php">
+      <class name="Service\CancelCorridaService" namespace="global">
+        <metrics complexity="8" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="34" coveredelements="34"/>
+      </class>
+      <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="13" type="stmt" count="5"/>
+      <line num="16" type="method" name="cancel" visibility="public" complexity="3" crap="3" count="5"/>
+      <line num="18" type="stmt" count="5"/>
+      <line num="19" type="stmt" count="5"/>
+      <line num="20" type="stmt" count="5"/>
+      <line num="22" type="stmt" count="5"/>
+      <line num="24" type="stmt" count="5"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="4"/>
+      <line num="30" type="stmt" count="4"/>
+      <line num="31" type="stmt" count="3"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="39" type="method" name="podeCancelarCorrida" visibility="private" complexity="3" crap="3" count="4"/>
+      <line num="41" type="stmt" count="4"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="3"/>
+      <line num="46" type="stmt" count="2"/>
+      <line num="47" type="stmt" count="2"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="53" type="method" name="cancelarCorrida" visibility="private" complexity="1" crap="1" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <line num="65" type="stmt" count="1"/>
+      <line num="66" type="stmt" count="1"/>
+      <line num="68" type="stmt" count="1"/>
+      <metrics loc="71" ncloc="71" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="34" coveredelements="34"/>
+    </file>
+    <file name="/var/www/html/src/Service/CorridaService.php">
+      <class name="Service\CorridaService" namespace="global">
+        <metrics complexity="18" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="67" coveredelements="67"/>
+      </class>
+      <line num="11" type="method" name="criarCorrida" visibility="protected" complexity="4" crap="4" count="17"/>
+      <line num="14" type="stmt" count="17"/>
+      <line num="15" type="stmt" count="17"/>
+      <line num="17" type="stmt" count="17"/>
+      <line num="18" type="stmt" count="16"/>
+      <line num="20" type="stmt" count="15"/>
+      <line num="21" type="stmt" count="15"/>
+      <line num="22" type="stmt" count="15"/>
+      <line num="23" type="stmt" count="15"/>
+      <line num="24" type="stmt" count="15"/>
+      <line num="25" type="stmt" count="15"/>
+      <line num="26" type="stmt" count="15"/>
+      <line num="27" type="stmt" count="15"/>
+      <line num="29" type="stmt" count="15"/>
+      <line num="30" type="stmt" count="15"/>
+      <line num="31" type="stmt" count="15"/>
+      <line num="32" type="stmt" count="15"/>
+      <line num="33" type="stmt" count="15"/>
+      <line num="34" type="stmt" count="15"/>
+      <line num="35" type="stmt" count="15"/>
+      <line num="36" type="stmt" count="15"/>
+      <line num="37" type="stmt" count="15"/>
+      <line num="38" type="stmt" count="15"/>
+      <line num="39" type="stmt" count="15"/>
+      <line num="41" type="stmt" count="14"/>
+      <line num="42" type="stmt" count="14"/>
+      <line num="44" type="stmt" count="14"/>
+      <line num="45" type="stmt" count="10"/>
+      <line num="48" type="stmt" count="14"/>
+      <line num="49" type="stmt" count="3"/>
+      <line num="50" type="stmt" count="3"/>
+      <line num="54" type="method" name="criarPassageiro" visibility="protected" complexity="2" crap="2" count="17"/>
+      <line num="57" type="stmt" count="17"/>
+      <line num="58" type="stmt" count="17"/>
+      <line num="59" type="stmt" count="17"/>
+      <line num="61" type="stmt" count="17"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="67" type="method" name="criarMotorista" visibility="protected" complexity="2" crap="2" count="16"/>
+      <line num="70" type="stmt" count="16"/>
+      <line num="71" type="stmt" count="16"/>
+      <line num="72" type="stmt" count="16"/>
+      <line num="73" type="stmt" count="16"/>
+      <line num="75" type="stmt" count="16"/>
+      <line num="76" type="stmt" count="1"/>
+      <line num="77" type="stmt" count="1"/>
+      <line num="81" type="method" name="getCorridas" visibility="protected" complexity="2" crap="2" count="14"/>
+      <line num="84" type="stmt" count="14"/>
+      <line num="85" type="stmt" count="14"/>
+      <line num="88" type="method" name="setCorridas" visibility="protected" complexity="1" crap="1" count="4"/>
+      <line num="91" type="stmt" count="4"/>
+      <line num="92" type="stmt" count="4"/>
+      <line num="95" type="method" name="getCorridaPorUuid" visibility="protected" complexity="4" crap="4" count="11"/>
+      <line num="97" type="stmt" count="11"/>
+      <line num="99" type="stmt" count="11"/>
+      <line num="100" type="stmt" count="11"/>
+      <line num="101" type="stmt" count="11"/>
+      <line num="102" type="stmt" count="8"/>
+      <line num="103" type="stmt" count="8"/>
+      <line num="108" type="stmt" count="3"/>
+      <line num="111" type="method" name="atualizarCorrida" visibility="protected" complexity="3" crap="3" count="4"/>
+      <line num="113" type="stmt" count="4"/>
+      <line num="115" type="stmt" count="4"/>
+      <line num="116" type="stmt" count="4"/>
+      <line num="117" type="stmt" count="4"/>
+      <line num="119" type="stmt" count="4"/>
+      <line num="121" type="stmt" count="4"/>
+      <metrics loc="126" ncloc="124" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="67" coveredelements="67"/>
+    </file>
+    <file name="/var/www/html/src/Service/CreateCorridaService.php">
+      <class name="Service\CreateCorridaService" namespace="global">
+        <metrics complexity="22" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="70" coveredelements="70"/>
+      </class>
+      <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="13" type="stmt" count="11"/>
+      <line num="16" type="method" name="create" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="18" type="stmt" count="11"/>
+      <line num="19" type="stmt" count="11"/>
+      <line num="21" type="stmt" count="11"/>
+      <line num="24" type="method" name="validaCorrida" visibility="private" complexity="5" crap="5" count="11"/>
+      <line num="26" type="stmt" count="11"/>
+      <line num="28" type="stmt" count="11"/>
+      <line num="30" type="stmt" count="11"/>
+      <line num="31" type="stmt" count="3"/>
+      <line num="34" type="stmt" count="8"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="7"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="6"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="46" type="stmt" count="4"/>
+      <line num="47" type="stmt" count="4"/>
+      <line num="49" type="stmt" count="4"/>
+      <line num="52" type="method" name="calculaPreco" visibility="private" complexity="7" crap="7" count="7"/>
+      <line num="54" type="stmt" count="7"/>
+      <line num="55" type="stmt" count="5"/>
+      <line num="57" type="stmt" count="5"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="5"/>
+      <line num="62" type="stmt" count="5"/>
+      <line num="65" type="stmt" count="5"/>
+      <line num="66" type="stmt" count="5"/>
+      <line num="68" type="stmt" count="5"/>
+      <line num="70" type="stmt" count="2"/>
+      <line num="71" type="stmt" count="1"/>
+      <line num="74" type="stmt" count="1"/>
+      <line num="77" type="stmt" count="6"/>
+      <line num="80" type="method" name="isLocalDificilAcesso" visibility="private" complexity="1" crap="1" count="5"/>
+      <line num="82" type="stmt" count="5"/>
+      <line num="85" type="method" name="isTempoExcedido" visibility="private" complexity="1" crap="1" count="5"/>
+      <line num="87" type="stmt" count="5"/>
+      <line num="90" type="method" name="autorizarCorrida" visibility="private" complexity="3" crap="3" count="6"/>
+      <line num="92" type="stmt" count="6"/>
+      <line num="93" type="stmt" count="6"/>
+      <line num="95" type="stmt" count="6"/>
+      <line num="96" type="stmt" count="6"/>
+      <line num="98" type="stmt" count="6"/>
+      <line num="99" type="stmt" count="6"/>
+      <line num="100" type="stmt" count="1"/>
+      <line num="101" type="stmt" count="1"/>
+      <line num="102" type="stmt" count="1"/>
+      <line num="105" type="stmt" count="5"/>
+      <line num="106" type="stmt" count="1"/>
+      <line num="107" type="stmt" count="1"/>
+      <line num="108" type="stmt" count="1"/>
+      <line num="111" type="stmt" count="4"/>
+      <line num="114" type="method" name="inserirCorrida" visibility="private" complexity="1" crap="1" count="4"/>
+      <line num="116" type="stmt" count="4"/>
+      <line num="117" type="stmt" count="4"/>
+      <line num="118" type="stmt" count="4"/>
+      <line num="119" type="stmt" count="4"/>
+      <line num="122" type="method" name="autenticarCorrida" visibility="private" complexity="1" crap="1" count="8"/>
+      <line num="124" type="stmt" count="8"/>
+      <line num="127" type="method" name="autorizaCorrida" visibility="private" complexity="1" crap="1" count="4"/>
+      <line num="129" type="stmt" count="4"/>
+      <line num="131" type="stmt" count="4"/>
+      <line num="132" type="stmt" count="4"/>
+      <line num="133" type="stmt" count="4"/>
+      <line num="134" type="stmt" count="4"/>
+      <line num="136" type="stmt" count="4"/>
+      <line num="137" type="stmt" count="4"/>
+      <line num="138" type="stmt" count="4"/>
+      <line num="140" type="stmt" count="4"/>
+      <metrics loc="142" ncloc="142" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="70" coveredelements="70"/>
+    </file>
+    <file name="/var/www/html/src/Service/ListCorridaService.php">
+      <class name="Service\ListCorridaService" namespace="global">
+        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="12" type="stmt" count="3"/>
+      <line num="15" type="method" name="list" visibility="public" complexity="3" crap="3" count="3"/>
+      <line num="17" type="stmt" count="3"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="2"/>
+      <line num="24" type="stmt" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="28" type="stmt" count="2"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <metrics loc="37" ncloc="37" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
+    </file>
+    <metrics files="11" loc="873" ncloc="871" classes="11" methods="75" coveredmethods="72" conditionals="0" coveredconditionals="0" statements="379" coveredstatements="350" elements="454" coveredelements="422"/>
+  </project>
+</coverage>
