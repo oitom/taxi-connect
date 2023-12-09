@@ -7,7 +7,10 @@ RUN apt-get update \
         git \
         unzip \
         libzip-dev \
-    && docker-php-ext-install zip
+    && docker-php-ext-install zip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+    
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer require --dev phpunit/php-code-coverage
 RUN pecl install xdebug && docker-php-ext-enable xdebug
