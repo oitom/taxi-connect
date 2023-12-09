@@ -1,6 +1,9 @@
 # taxi-connect
 Taxi Connect é uma API robusta e confiável projetada para simplificar e fortalecer o processo de autorização em serviços de corridas de táxi.
 
+[![CodeFactor](https://www.codefactor.io/repository/github/oitom/taxi-connect/badge)](https://www.codefactor.io/repository/github/oitom/taxi-connect)
+[![Maintainability](https://api.codeclimate.com/v1/badges/84647828e6ee2628a303/maintainability)](https://codeclimate.com/github/oitom/taxi-connect/maintainability)
+
 ## Configuração do Ambiente
 Pré-requisitos
 
