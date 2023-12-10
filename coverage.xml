@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1702156515">
-  <project timestamp="1702156515">
+<coverage generated="1702251733">
+  <project timestamp="1702251733">
     <file name="/var/www/html/src/Controller/ApiController.php">
       <class name="Controller\ApiController" namespace="global">
         <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="16" coveredelements="16"/>
@@ -218,43 +218,54 @@
       <line num="82" type="stmt" count="1"/>
       <metrics loc="85" ncloc="85" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="49" coveredelements="49"/>
     </file>
+    <file name="/var/www/html/src/Router/DefaultHeaderProvider.php">
+      <class name="Router\DefaultHeaderProvider" namespace="global">
+        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </class>
+      <line num="7" type="method" name="getHeaders" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="9" type="stmt" count="2"/>
+      <metrics loc="11" ncloc="11" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+    </file>
     <file name="/var/www/html/src/Router/Router.php">
       <class name="Router\Router" namespace="global">
-        <metrics complexity="12" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="32" coveredelements="0"/>
+        <metrics complexity="14" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="35" coveredelements="35"/>
       </class>
-      <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="15" type="stmt" count="0"/>
-      <line num="18" type="method" name="handleRequest" visibility="public" complexity="6" crap="42" count="0"/>
-      <line num="20" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="47" type="method" name="authenticate" visibility="private" complexity="5" crap="30" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="57" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <metrics loc="62" ncloc="62" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="32" coveredelements="0"/>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="18" type="stmt" count="8"/>
+      <line num="21" type="method" name="handleRequest" visibility="public" complexity="7" crap="7" count="8"/>
+      <line num="23" type="stmt" count="8"/>
+      <line num="24" type="stmt" count="3"/>
+      <line num="25" type="stmt" count="3"/>
+      <line num="26" type="stmt" count="3"/>
+      <line num="29" type="stmt" count="5"/>
+      <line num="30" type="stmt" count="5"/>
+      <line num="31" type="stmt" count="5"/>
+      <line num="34" type="stmt" count="5"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="4"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="3"/>
+      <line num="41" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="5"/>
+      <line num="54" type="method" name="authenticate" visibility="private" complexity="6" crap="6" count="8"/>
+      <line num="56" type="stmt" count="8"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="8"/>
+      <line num="61" type="stmt" count="8"/>
+      <line num="62" type="stmt" count="8"/>
+      <line num="64" type="stmt" count="8"/>
+      <line num="65" type="stmt" count="3"/>
+      <line num="68" type="stmt" count="5"/>
+      <metrics loc="71" ncloc="71" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="35" coveredelements="35"/>
     </file>
     <file name="/var/www/html/src/Service/AticvateCorridaService.php">
       <class name="Service\AticvateCorridaService" namespace="global">
@@ -502,6 +513,6 @@
       <line num="33" type="stmt" count="1"/>
       <metrics loc="37" ncloc="37" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
     </file>
-    <metrics files="11" loc="873" ncloc="871" classes="11" methods="75" coveredmethods="72" conditionals="0" coveredconditionals="0" statements="379" coveredstatements="350" elements="454" coveredelements="422"/>
+    <metrics files="12" loc="893" ncloc="891" classes="12" methods="76" coveredmethods="76" conditionals="0" coveredconditionals="0" statements="383" coveredstatements="383" elements="459" coveredelements="459"/>
   </project>
 </coverage>

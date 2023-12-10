@@ -1,6 +1,9 @@
 <?php
 namespace Router;
 
+use Router\HeaderProviderInterface;
+use Router\DefaultHeaderProvider;
+
 class Router
 {
   private $clientCredentials = [
@@ -15,9 +18,13 @@ class Router
     $this->apiController = $apiController;
   }
 
-  public function handleRequest()
+  public function handleRequest(HeaderProviderInterface $headerProvider = null)
   {
-    $this->authenticate();
+    if(!$this->authenticate($headerProvider)) {
+      http_response_code(401);
+      $result = ["message" => "Autenticação falhou. Credenciais inválidas"];
+      return json_encode($result);
+    }
 
     $queryParams = $_GET;
     $method = $_SERVER['REQUEST_METHOD'];
@@ -44,18 +51,20 @@ class Router
     return $result;
   }
 
-  private function authenticate()
+  private function authenticate($headerProvider)
   {
-    $headers = getallheaders();
+    if ($headerProvider === null) {
+      $headerProvider = new DefaultHeaderProvider();
+    }
+    $headers = $headerProvider->getHeaders();    
 
     $clientId = isset($headers['CLIENT_ID']) ? $headers['CLIENT_ID'] : null;
     $clientSecret = isset($headers['CLIENT_SECRET']) ? $headers['CLIENT_SECRET'] : null;
 
     if ($clientId !== $this->clientCredentials['client_id'] || $clientSecret !== $this->clientCredentials['client_secret']) {
-      http_response_code(401);
-      $result = ["message" => "Autenticação falhou. Credenciais inválidas"];
-      echo json_encode($result);
-      exit();
+     return false;
     }
+
+    return true;
   }
 }
