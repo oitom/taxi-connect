@@ -1,4 +1,4 @@
-name: Jets Workflow
+name: PHPUnit Workflow
 
 on:
   push:
