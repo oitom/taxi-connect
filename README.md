@@ -71,8 +71,17 @@ docker exec -it taxi-connect-web-1 vendor/bin/phpunit --coverage-html=coverage/
 2. Se tudo der certo, o relatório estará disponível em: http://localhost:8080/coverage/index.html
 
 ## Executando o Projeto
-Para testar as chamadas da API, você pode seguir estas instruções utilizando ferramentas como Postman ou curl. Certifique-se de incluir os cabeçalhos `CLIENT_ID` e `CLIENT_SECRET` em todas as suas solicitações para autenticação adequada. Siga os passos abaixo:
+Para testar as chamadas da API, você pode seguir estas instruções utilizando ferramentas como Postman (no) ou curl. Certifique-se de incluir os cabeçalhos `CLIENT_ID` e `CLIENT_SECRET` em todas as suas solicitações para autenticação adequada. Siga os passos abaixo:
 
+#### Importando collection no postman
+Se você escolher utilizar o Postman, pode importar facilmente os arquivos de collection e environment presentes na raiz do projeto. Para isso, siga estes passos simples:
+
+1. Abra o Postman;
+2. Clique em "Import" no canto superior esquerdo;
+3. Selecione a opção "File" e escolha os arquivos de `collection` (*.json) e `environment` (*.json) que está na raiz do projeto;
+4. Após a importação, os endpoints e variáveis necessárias estarão disponíveis para uso imediato.
+
+#### Credenciais
 
 - `CLIENT_ID`: 
 ```
